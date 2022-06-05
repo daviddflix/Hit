@@ -27,8 +27,8 @@ export const  MainContainer = styled.div`
              -6px -6px 12px #ffffff;
     border-radius: 5px;
     margin-top: 0;
-    background-color: #fff
- 
+    background-color: #fff;
+    
   
   
 

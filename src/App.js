@@ -29,7 +29,7 @@ function App() {
     const [input, setInput] = useState({
       nombre: "",
       direccion: "",
-      numero: 0,
+      numero: "",
       email: "",
       sub: "",
       zona: ""

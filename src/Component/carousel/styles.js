@@ -45,7 +45,7 @@ height: 500px;
 
 @media screen and (max-width: 900px ) {
     height: 70vh;
-  
+    
     
 }
 `;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import img from '../carousel/image/spaguetti 1500x.jpg';
-import {AiOutlineClose} from 'react-icons/ai'
+import {BiTrashAlt} from 'react-icons/bi'
+import {RiArrowLeftSLine} from 'react-icons/ri'
 
 export const MainContainer = styled.div`
 @media screen and (max-width: 900px){
@@ -11,16 +12,15 @@ export const MainContainer = styled.div`
  align-items: center;
  background-color: #f3fbfb;
  margin-top: 60px;
+ position: relative;
 }
 `;
 
 export const Img = styled.img`
 @media screen and (max-width: 900px){
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 110px;
+  
+  width: 100%;
+  height: 60%;
   border-radius: 10px;
 } 
 `; 
@@ -29,16 +29,13 @@ export const Container = styled.div`
 @media screen and (max-width: 900px){
  display: flex;
  flex-direction: row;
- box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
  align-items: center;
  margin:1rem;
- background-color: #fff;
  position: relative;
- border-radius: 10px;
- width: 370px;
+ width: 90%;
  justify-content: center;
- border: none;
- height: 200px;
+ border-bottom: 1px solid rgba(99, 99, 99, 0.2);
+
 
 }
 `;
@@ -55,11 +52,20 @@ export const ContainerProduct = styled.div`
 }
 `;
 
+export const ContainerImg = styled.div`
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 1rem;
+`
+
 export const BtnFinalizarCompra = styled.button`
 @media screen and (max-width: 900px){
 
   padding: 20px 30px;
-      
+        font-size: 11px;
         background-color: #282828;
         color: #fff;
         border: none;
@@ -70,6 +76,19 @@ export const BtnFinalizarCompra = styled.button`
 }
 `;
 
+export const ButtonVerCarrito = styled.button`
+ @media screen and (max-width: 900px) {
+        background-color: #282828;
+        color: #fff;
+        border: none;
+        margin-left: 1rem;
+        width: 40%;
+        margin-bottom: 5rem;
+        border-radius: 10px;
+        font-size: 11px;
+         
+ }
+`;
 
 export const Title = styled.img`
 @media screen and (max-width: 900px){
@@ -105,7 +124,7 @@ export const FlexOptions = styled.div`
 }
 `;
 
-export const ButtonItemDelete = styled(AiOutlineClose)`
+export const ButtonItemDelete = styled(BiTrashAlt)`
     
 
     @media screen and (max-width: 900px){
@@ -117,27 +136,26 @@ export const ButtonItemDelete = styled(AiOutlineClose)`
      width: 25px;
      height: 25px;
      padding: 4px;
-     /* box-shadow:  6px 6px 12px #bebebe,
-             -6px -6px 12px #ffffff; */
+     box-shadow:  6px 6px 12px #bebebe,
+             -6px -6px 12px #ffffff;
     border-radius: 0 10px 0 10px;
-    background-color: #282828;
-    color: #fff;
+   
+    color: #282828;
    
     
    } 
 `; 
 
 
-export const ButtonVerCarrito = styled.button`
- @media screen and (max-width: 900px) {
-        background-color: #282828;
-        color: #fff;
-        border: none;
-        margin-left: 1rem;
-        width: 40%;
-        margin-bottom: 5rem;
-        border-radius: 10px;
-       
-         
- }
-`;
+export const ArrowLeft = styled(RiArrowLeftSLine)`
+position: absolute;
+left: 1rem;
+top: 1rem;
+width: 32px;
+height: 32px;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+border-radius: 10px;
+
+`
+
+

@@ -56,7 +56,7 @@ export const Container = styled.div`
  /* border: 1px solid rgba(0,0,0,0.20); */
  display: flex;
  margin: 1rem;
- height: 220px;
+ height: 250px;
  border-radius: 10px;
  align-items: center;
  flex-direction: column;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { postCompra, getAllCompras, DeleteItem } from "../../redux/actions";
-import { BtnFinalizarCompra, Container, ContainerProduct, Flex, Img, MainContainer,FlexOptions, Title, ButtonItemDelete, ButtonVerCarrito } from "./styles"
+import { BtnFinalizarCompra, Container, ContainerProduct, Flex, Img, MainContainer,FlexOptions, Title, ButtonItemDelete, ButtonVerCarrito, ArrowLeft, ContainerImg } from "./styles"
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
 
@@ -36,7 +36,7 @@ export default function ResumenCarrito (){
    
     return(
         <MainContainer>
-
+        <ArrowLeft onClick={backToProducts}/>
             <h2 >TUS PRODUCTOS</h2>
             
             <div>
@@ -46,10 +46,10 @@ export default function ResumenCarrito (){
                       <Container key={i}>
                          <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))} />
 
-                       <div style={{width: '20%',display: 'flex', margin: '0', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+                       <ContainerImg>
                        <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
-                        <h3 style={{margin: 0, position: 'absolute', bottom: '2rem'}}>{p.title}</h3>
-                       </div>
+                        <h3 style={{color: '#ff595a'}}>{p.title}</h3>
+                       </ContainerImg>
 
                         <ContainerProduct>
                         {
