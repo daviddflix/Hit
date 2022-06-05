@@ -1,4 +1,4 @@
-import { MainContainer, ContainerInfo, Img } from "./styles";
+import { MainContainer, ContainerInfo, Img, Schedule } from "./styles";
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import logo from './Images/logo.png'
@@ -30,7 +30,7 @@ export default function Footer (){
           <Img src={logo} alt='logo' />
           
           <ContainerInfo>
-              <h4>Estamos abiertos todos los dias, de 12hs a 24hs</h4>
+              <Schedule>Estamos abiertos todos los dias, de 12hs a 24hs</Schedule>
           </ContainerInfo>
 
              <Copyright/>

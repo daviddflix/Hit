@@ -52,7 +52,7 @@ export const BoxOptionsChild = styled.div`
 export const Img = styled.img`
 @media screen and (max-width:900px){
     width: 100%;
-    height: 80%;
+   height: 50%;
     border-radius: 10px 10px 0px 0px;
 }
 `;
@@ -60,15 +60,10 @@ export const Img = styled.img`
 export const Buttons = styled.button`
 @media screen and (max-width:900px){
    
-    background-color: #282828;
-    color: #fff;
-    padding: 10px 15px;
+    border-radius: 100px;
     border: none;
-    border-radius: 10px;
-
-    :hover{
-        background-color: black;
-    }
+    width: 80%;
+    background-color: #fff;
 }
 `;
 

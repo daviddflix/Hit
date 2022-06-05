@@ -225,7 +225,7 @@ export default function Nav(){
      <ContainerIconCart   onClick={cart}>
      <IconButton aria-label="cart">
       <StyledBadge badgeContent={cartItems.length? cartItems.length : '0'} color="primary">
-        <ShoppingCartIcon style={{color: '#282828'}}/>
+        <ShoppingCartIcon style={{color: '#ff595a'}}/>
       </StyledBadge>
     </IconButton>
     </ContainerIconCart>

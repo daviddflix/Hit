@@ -1,10 +1,11 @@
 
 import {  useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../redux/actions";
+import { addItem, DeleteItem } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { MainContainer, BoxOptions, BoxOptionsChild, Img, Buttons, P, CartIcon, ButtonAddToCart } from "./dessertStyles"
-import {v4 as uuidv4} from 'uuid';
+import { MainContainer, BoxOptions, BoxOptionsChild, Img, Buttons, P } from "./dessertStyles"
+import {VscTrash} from 'react-icons/vsc'
+import { Container, ContainerButtons, ContainerInfo, Title } from "./bebidasStyles";
 
 export default function Dessert () {
 
@@ -23,8 +24,9 @@ export default function Dessert () {
                 img={`https://hit-pasta.herokuapp.com/${p.picture_url}`}
                 product={p.title}
                 price={products[0].dessert.dessertPrice}
-                quantity={0}
+                quantity={1}
                 picture_url={p.picture_url}
+                id={p.id}
                 />
              )
          }): <Loading/>
@@ -36,66 +38,76 @@ export default function Dessert () {
     )
 }
 
-function Card({img, product, price, quantity, picture_url}){
+function Card({img, product, price, quantity, picture_url, id}){
 
   const dispatch = useDispatch()
   
+  const cart = useSelector(state => state.cart)
 
   const [dessert, setDessert] = useState({
     title: product,
     quantity: quantity,
     unit_price: 0,
-    id: '',
+    id: id,
     picture_url
   })
-  console.log('d', dessert)
+ 
 
     const ProductNumberIncrement = () => {
       setDessert(prev => ({...prev, quantity: dessert.quantity + 1 }))
+      dispatch(addItem(dessert))
   }
-    const ProductNumberDecrement = () => {
-      if(dessert.quantity === 0){
-        setDessert(prev => ({...prev, quantity: 0 }))
-      } else{
-        setDessert(prev => ({...prev, quantity: dessert.quantity - 1 }))
-      }
-    }
+    // const ProductNumberDecrement = () => {
+    //   if(dessert.quantity === 0){
+    //     setDessert(prev => ({...prev, quantity: 0 }))
+    //   } else{
+    //     setDessert(prev => ({...prev, quantity: dessert.quantity - 1 }))
+    //   }
+    // }
 
-    const AddItemsToCart = () => {
-      if(dessert.quantity){
-       dispatch(addItem(dessert))
-      }
-    setDessert(prev => ({...prev,quantity: 0}))
-   }
+  //   const AddItemsToCart = () => {
+  //     if(dessert.quantity){
+  //      dispatch(addItem(dessert))
+  //     }
+  //   setDessert(prev => ({...prev,quantity: 0}))
+  //  }
+
+  const quantityInCart = cart && cart.find(p => p.id === id)
+  const realQuantity  = quantityInCart? quantityInCart.quantity : 0
+
+  
+  const deleteItem = () => {
+    dispatch(DeleteItem(id))
+  }
+
+
   
 
   useEffect(() => {
-    
-      const totalPrice = dessert.quantity !== 0? dessert.quantity * 400: 0
-    setDessert(prev => ({...prev, unit_price: 400, id: uuidv4()}))
+    setDessert(prev => ({...prev, unit_price: 400}))
  
 }, [dessert.quantity])
 
   return(
-    <BoxOptionsChild>
+    <Container>
     <Img src={img}/>
    
-   <div>
+   <ContainerInfo>
 
    <div>
-   <h4 style={{marginTop: '.5rem', marginBottom: '.5rem'}}>{product}</h4>
-    <h4  style={{margin: '0'}}>${price}</h4>
+   <Title>{product}</Title>
+    <h4  style={{margin: '0', color: 'red'}}>${price}</h4>
    </div>
 
-   <div style={{display: 'flex', alignItems: 'center'}}>
-     <Buttons onClick={ProductNumberDecrement}>-</Buttons>
-     <P>{dessert.quantity}</P>
+   <ContainerButtons>
+     <Buttons onClick={deleteItem}><VscTrash  style={{width: '15px', height: '15px'}}/></Buttons>
+     <Buttons>{realQuantity}</Buttons>
      <Buttons onClick={ProductNumberIncrement}>+</Buttons>
-   </div>
-   <ButtonAddToCart onClick={AddItemsToCart} disabled={dessert.quantity === 0}> <CartIcon /></ButtonAddToCart>
-  </div>
+   </ContainerButtons>
+   {/* <ButtonAddToCart onClick={AddItemsToCart} disabled={dessert.quantity === 0}> <CartIcon /></ButtonAddToCart> */}
+  </ContainerInfo>
   
  
-</BoxOptionsChild>
+</Container>
   )
 }

@@ -50,3 +50,8 @@ export const Img = styled.img`
    top: 1rem;
    margin: 0;
 `;
+
+export const Schedule = styled.h4`
+  font-size: 13px;
+`;
+

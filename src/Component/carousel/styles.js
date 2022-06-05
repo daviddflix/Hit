@@ -45,8 +45,8 @@ height: 500px;
 
 @media screen and (max-width: 900px ) {
     height: 70vh;
-    background-repeat: no-repeat;
-    background-position: center;
+  
+    
 }
 `;
 

@@ -8,6 +8,8 @@ export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 export const DELETE_ITEM = 'DELETE_ITEM'
 export const LINK_PAYMENT= 'LINK_PAYMENT'
 export const CLEAR_STORAGE = 'CLEAR_STORAGE'
+export const REMOVE_QUANTITY = 'REMOVE_QUANTITY'
+
 
 const url= 'https://hit-pasta.herokuapp.com'   
 const ur = 'http://localhost:4000'
@@ -118,6 +120,14 @@ export function postCompra (payload){
          payload: value
      }
  }
+
+ export function removeQuantity(value){
+    
+    return{
+        type:REMOVE_QUANTITY,
+        payload: value
+    }
+}
 
  export function DeleteItem(value){
     

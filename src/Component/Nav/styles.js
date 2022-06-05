@@ -38,7 +38,7 @@ export  const MobileIcon = styled(AiOutlineMenu)`
         width: 20px;
         height: 20px;
         display: block;
-        color: #282828;
+        color: #ff595a;
        
 }
 `;

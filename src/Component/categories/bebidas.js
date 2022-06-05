@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, getProduct } from "../../redux/actions";
+import { addItem, DeleteItem, getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { ContainerInfo, Img, MainContainer, Title,SubTitle ,Container, Buttons, ButtonAddToCart, P, CartIcon } from "./bebidasStyles";
-import {v4 as uuidv4} from 'uuid';
+import { ContainerInfo, Img, MainContainer, Title,SubTitle ,Container, Buttons,ContainerButtons, CardContainer } from "./bebidasStyles";
+import {AiOutlinePlus} from 'react-icons/ai'
+import {VscTrash} from 'react-icons/vsc'
 
 export default function Drinks(){
 
@@ -23,74 +24,79 @@ export default function Drinks(){
         <MainContainer>
            <h3 >ELIGE TUS BEBIDAS</h3>
            <SubTitle>Bebidas Sin Alcohol</SubTitle>
-           <div>
+           <CardContainer>
            {
               productos? ItemWithAlcohol.map((p, i) => {
                  return(
-                  <Card key={i} product={p.title} price={p.price} quantity={0} picture_url={p.picture_url}/>
+                  <Card key={i} product={p.title} price={p.price} id={p.id} quantity={1} picture_url={p.picture_url}/>
                  
                  )
                }): <Loading/>
            }
-           </div>
+           </CardContainer>
            <SubTitle>Bebidas Con Alcohol</SubTitle>
-           <div>
+           <CardContainer>
                {
                     productos? ItemWithoutAlcohol.map((p, i) => {
                         return(
-                         <Card key={i} product={p.title} price={p.price} quantity={0} picture_url={p.picture_url}/>
+                         <Card key={i} product={p.title} price={p.price} id={p.id} quantity={1} picture_url={p.picture_url}/>
                         
                         )
                       }): <Loading/>
                }
-           </div>
+           </CardContainer>
         </MainContainer>
     )
 }
 
 
 
-function Card ({ product, price, quantity, picture_url}) {
+
+
+function Card ({ product, price, quantity, picture_url, id}) {
 
     const dispatch = useDispatch()
 
     const productos = useSelector(state => state.food)
-
+    const cart = useSelector(state => state.cart)
+   
+    const quantityInCart = cart && cart.find(p => p.id === id)
+    const realQuantity  = quantityInCart? quantityInCart.quantity : 0
    
 
     const [drinks, setDrinks] = useState({
-        title: product,
+        title: product, 
         quantity: quantity,
         unit_price: 0,
-        id: '',
+        id: id,
         picture_url
     })
 
+  
     const ProductNumberIncrement = () => {
-        setDrinks(prev => ({...prev, quantity: drinks.quantity + 1 }))
-       
+        setDrinks(prev => ({...prev, quantity: drinks.quantity + 1  }))
+        dispatch(addItem(drinks))
+           
     }
-      const ProductNumberDecrement = () => {
-        if(drinks.quantity === 0){
-            setDrinks(prev => ({...prev, quantity: 0 }))
-        } else{
-            setDrinks(prev => ({...prev, quantity: drinks.quantity - 1 }))
-        }
+    //   const ProductNumberDecrement = () => {
+    //     if(drinks.quantity === 0){
+    //         setDrinks(prev => ({...prev, quantity: 0 }))
+    //     } else{
+    //         setDrinks(prev => ({...prev, quantity: drinks.quantity - 1 }))
+           
+    //     }
+    //   }
+
+      const deleteItem = () => {
+        dispatch(DeleteItem(id))
       }
   
-      const AddItemsToCart = () => {
-        if(drinks.quantity){
-         dispatch(addItem(drinks))
-         setDrinks(prev => ({...prev, quantity: 0}))
-        }
-     }
     
     useEffect(() => {
         const item = productos[0].beverages.filter(p => p.title===drinks.title)
         const price = item.map(p => p.price)
-     
-        // const totalPrice = drinks.quantity !== 0? drinks.quantity * price: 0
-        setDrinks(prev => ({...prev, unit_price:price[0] , id: uuidv4()}))
+    
+        setDrinks(prev => ({...prev, unit_price:price[0]}))
    
   }, [drinks.quantity, drinks.title, productos])
   
@@ -102,14 +108,15 @@ function Card ({ product, price, quantity, picture_url}) {
        <ContainerInfo >
            <Title>{product}</Title>
           
-           <h4 style={{margin: '0', color: '#282828'}}>${price}</h4>
+           <h4 style={{margin: '0', color: 'red'}}>${price}</h4>
 
-                <div style={{display: 'flex', alignItems: 'center'}}>
-                  <Buttons  onClick={ProductNumberDecrement}>-</Buttons>
-                   <P>{drinks.quantity}</P>
-                  <Buttons  onClick={ProductNumberIncrement}>+</Buttons>
-               <ButtonAddToCart  onClick={AddItemsToCart} disabled={drinks.quantity === 0}> <CartIcon /></ButtonAddToCart>
-               </div>
+                <ContainerButtons>
+                  <Buttons  onClick={deleteItem}><VscTrash  style={{width: '15px', height: '15px'}}/></Buttons>
+                   
+                  <Buttons defaultValue={0}>{realQuantity}</Buttons>
+                  <Buttons onClick={ProductNumberIncrement}><AiOutlinePlus style={{width: '20px', height: '20px'}}/></Buttons>
+               </ContainerButtons>
+
        </ContainerInfo>
        
    </Container>
