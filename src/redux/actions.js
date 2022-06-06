@@ -9,10 +9,11 @@ export const DELETE_ITEM = 'DELETE_ITEM'
 export const LINK_PAYMENT= 'LINK_PAYMENT'
 export const CLEAR_STORAGE = 'CLEAR_STORAGE'
 export const REMOVE_QUANTITY = 'REMOVE_QUANTITY'
+export const ADD_ITEM_TO_CART_REVIEW = 'ADD_ITEM_TO_CART_REVIEW'
 
 
 const url= 'https://hit-pasta.herokuapp.com'   
-const ur = 'http://localhost:4000'
+// const ur = 'http://localhost:4000'
 
 export function getProduct (){   
        return async function (dispatch){
@@ -114,9 +115,17 @@ export function postCompra (payload){
     } 
 
  export function addItem(value){
-    
+    console.log('action', value)
      return{
          type:ADD_ITEM_TO_CART,
+         payload: value
+     }
+ }
+
+ export function addItemReview(value){
+   
+     return{
+         type:ADD_ITEM_TO_CART_REVIEW,
          payload: value
      }
  }

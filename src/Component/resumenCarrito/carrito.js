@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
-import { getAllCompras, DeleteItem, addItem } from "../../redux/actions";
+import { getAllCompras, DeleteItem, addItemReview } from "../../redux/actions";
 import { BtnFinalizarCompra,Options, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal } from "./styles"
 import { useAuth0} from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
@@ -55,8 +55,8 @@ export default function ResumenCarrito (){
                   product={p.title}
                   id={p.id}
                   unit_price={p.unit_price}
-                  salsas={p.salsa && p.salsa.map(p => <OptionItems>{p}</OptionItems>)}
-                  toppings={p.toppings && p.toppings.map(p => <OptionItems>{p}</OptionItems>)}
+                  salsas={p.salsa && p.salsa.map((p, i) => <OptionItems key={i}>{p}</OptionItems>)}
+                  toppings={p.toppings && p.toppings.map((p, i) => <OptionItems key={i}>{p}</OptionItems>)}
                   />
                  )
                })
@@ -91,7 +91,7 @@ function Card({product, salsas, unit_price, toppings, picture_url, id}){
 console.log('cart', cart)
 
     const ProductNumberIncrement = () => {
-      dispatch(addItem(id))
+      dispatch(addItemReview(id))
   }
 
   const quantityInCart = cart && cart.find(p => p.id === id)
