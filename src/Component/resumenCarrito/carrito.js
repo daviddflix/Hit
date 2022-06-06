@@ -1,23 +1,28 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
-import { postCompra, getAllCompras, DeleteItem } from "../../redux/actions";
-import { BtnFinalizarCompra, Container, ContainerProduct, Flex, Img, MainContainer,FlexOptions, Title, ButtonItemDelete, ButtonVerCarrito, ArrowLeft, ContainerImg } from "./styles"
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import { getAllCompras, DeleteItem, addItem } from "../../redux/actions";
+import { BtnFinalizarCompra,Options, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal } from "./styles"
+import { useAuth0} from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
-
+import {Buttons, ContainerButtons} from '../categories/bebidasStyles'
+import {VscTrash} from 'react-icons/vsc'
 
 
 export default function ResumenCarrito (){
 
-  const {isAuthenticated, user  } = useAuth0();
+  const {isAuthenticated , loginWithRedirect } = useAuth0();
   
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const history = useHistory()
 
   const ProcederAlPago = async () => {
+     if(isAuthenticated){
       history.push('/formPago')
+     } else {
+       loginWithRedirect()
+     }
       
   }
 
@@ -33,78 +38,36 @@ export default function ResumenCarrito (){
   const backToProducts = () => {
     history.push('/productos')
  }
+
+
+
    
     return(
         <MainContainer>
         <ArrowLeft onClick={backToProducts}/>
             <h2 >TUS PRODUCTOS</h2>
             
-            <div>
-               {
-                  cart.length && cart.map((p, i)=> {
-                    return(
-                      <Container key={i}>
-                         <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))} />
+           <ContainerProduct>
+             {
+               cart && cart.map((p, i) => {
+                 return(
+                  <Card key={i} picture_url={`https://hit-pasta.herokuapp.com/${p.picture_url}`} 
+                  product={p.title}
+                  id={p.id}
+                  unit_price={p.unit_price}
+                  salsas={p.salsa && p.salsa.map(p => <OptionItems>{p}</OptionItems>)}
+                  toppings={p.toppings && p.toppings.map(p => <OptionItems>{p}</OptionItems>)}
+                  />
+                 )
+               })
+             }
 
-                       <ContainerImg>
-                       <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
-                        <h3 style={{color: '#ff595a'}}>{p.title}</h3>
-                       </ContainerImg>
+           </ContainerProduct>
 
-                        <ContainerProduct>
-                        {
-                          p.salsa && <Flex>
-                          <h5 style={{margin: 0}}>SALSAS</h5>
-                           <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
-                           {
-                              p.salsa.map((i, index) => {
-                                return(
-                                  <FlexOptions key={index}>
-                                    <h5 style={{margin: '0'}}>{i}</h5>
-                                  </FlexOptions>
-                                )
-                              })
-                            }
-                           </div>
-                          </Flex>
-                        }
-                        {
-                          p.toppings && <Flex>
-                          <h5 style={{margin: 0}}>TOPPINGS</h5>
-                            <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
-                            {
-                              p.toppings.map((i, index) => {
-                                return(
-                                  <FlexOptions key={index}>
-                                    <h5 style={{margin: '0', }}>{i}</h5>
-                                    {/* <h4 style={{margin: '0', }}>{p.priceTopping}</h4> */}
-                                  </FlexOptions>
-                                )
-                              })
-                            }
-                            </div>
-                          </Flex>
-                        }
-                         <div  style={{display: 'flex', margin: '0', alignItems: 'center', justifyContent: 'space-around', width: '100%'}}>
-                        <h5 style={{margin: 0}}>Cantidad</h5>
-                        <h5 style={{margin: '0' }}>{p.quantity}</h5>
-                        </div>
-                        <Flex>
-                          <h5 >SUBTOTAL</h5>
-                          <h5> <CurrencyFormat fixedDecimalScale={true} value={p.unit_price * p.quantity} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h5>
-                        </Flex>
-                        </ContainerProduct>
-                      </Container>
-                    )
-                  })
-                }
-    
-            </div>
-
-           <Flex>
+           <ContainerTotal>
               <h4>TOTAL</h4>
               <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
-           </Flex>
+           </ContainerTotal>
 
            <div style={{display:'flex', width: '100%'}}>
            <BtnFinalizarCompra 
@@ -115,5 +78,63 @@ export default function ResumenCarrito (){
 
         </MainContainer>
     )
+}
+
+
+
+
+function Card({product, salsas, unit_price, toppings, picture_url, id}){
+
+  const dispatch = useDispatch()
+  
+  const cart = useSelector(state => state.cart)
+console.log('cart', cart)
+
+    const ProductNumberIncrement = () => {
+      dispatch(addItem(id))
+  }
+
+  const quantityInCart = cart && cart.find(p => p.id === id)
+  const realQuantity  = quantityInCart? quantityInCart.quantity : 0
+
+  
+  const deleteItem = () => {
+    dispatch(DeleteItem(id))
+  }
+
+//   useEffect(() => {
+//     setDessert(prev => ({...prev, unit_price: 400}))
+ 
+// }, [dessert.quantity])
+
+  return(
+    <SubContainer>
+    <Img src={picture_url}/>
+   
+    <ContainerInfo>
+   
+    <ContainerInfo2>
+    <Title>{product}</Title>
+     
+     <Options>
+     {salsas}
+     </Options>
+     <Options>
+     {toppings}
+     </Options>
+   
+
+    </ContainerInfo2>
+     <Unitprice><CurrencyFormat  fixedDecimalScale={true} value={unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></Unitprice>
+   <ContainerButtons>
+     <Buttons onClick={deleteItem}><VscTrash  style={{width: '15px', height: '15px'}}/></Buttons>
+     <Buttons>{realQuantity}</Buttons>
+     <Buttons onClick={ProductNumberIncrement}>+</Buttons>
+   </ContainerButtons>
+  </ContainerInfo>
+  
+ 
+</SubContainer>
+  )
 }
 

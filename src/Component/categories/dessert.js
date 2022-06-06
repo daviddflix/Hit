@@ -104,7 +104,6 @@ function Card({img, product, price, quantity, picture_url, id}){
      <Buttons>{realQuantity}</Buttons>
      <Buttons onClick={ProductNumberIncrement}>+</Buttons>
    </ContainerButtons>
-   {/* <ButtonAddToCart onClick={AddItemsToCart} disabled={dessert.quantity === 0}> <CartIcon /></ButtonAddToCart> */}
   </ContainerInfo>
   
  

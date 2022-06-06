@@ -239,21 +239,19 @@ export const Okay = styled.button`
         }
          
  @media screen and (max-width: 900px) {
-        padding: 20px 30px;
-        margin-bottom: 2rem;
-        background-color: #282828;
+        background-color: #29d884;
         color: #fff;
         border: none;
-        margin-left: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
+        margin-left: 2rem;
+        width: 120px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 5rem;
+        border-radius: 10px;
         display: flex;
-       
         align-items: center;
-
-        :hover{
-                background-color: black;
-        }
+        justify-content: center;
+        
          
  }
 `;
@@ -269,19 +267,15 @@ export const BtnArmarOtroHit = styled.button`
         cursor: pointer;
         z-index: 10;
  @media screen and (max-width: 900px) {
-        padding: 20px 30px;
-        margin-bottom: 2rem;
-        background-color: #282828;
+        background-color: #29d884;
         color: #fff;
         border: none;
-        margin-left: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        z-index: 10;
-
-        :hover{
-                background-color: black;
-        }
+        margin-left: 2rem;
+        width: 50%;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 5rem;
+        border-radius: 10px;
          
  }
 `;

@@ -40,15 +40,11 @@ export default function DetailProduct(){
 
       const Carrito = () => {
       
-        if(isAuthenticated){
+       
           if(options.salsa.length){
             dispatch(addItem(options))
            }
             history.push('/carrito')
-        } else{
-          loginWithRedirect()
-        }
-       
       }
      
 
@@ -65,7 +61,7 @@ export default function DetailProduct(){
          if(checked === true){
         options.salsa.length <=1 && setOptions(prev => ({
                 ...prev, salsa: [...prev.salsa, name], picture_url: detail.picture_url, 
-                id: uuidv4(), price: detail.price, title: detail.title
+                id: detail.id, price: detail.price, title: detail.title
               }))
               
              

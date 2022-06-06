@@ -118,12 +118,7 @@ export default function Nav(){
   }
 
   const cart = () => {
-       if(show === true){
-          setShow(false)
-          setCloseCart(!closeCart)
-       }else{
-         setCloseCart(!closeCart)
-       }
+      history.push('/carrito')
    }
 
    const changeBackgroundColor = () => {
@@ -231,9 +226,9 @@ export default function Nav(){
     </ContainerIconCart>
     
     
-   <MenuCart open={closeCart} >
+   {/* <MenuCart open={closeCart} >
         <Carrito/>
-     </MenuCart>
+     </MenuCart> */}
 
     
 

@@ -3,25 +3,18 @@ import Drinks from "./bebidas";
 import Dessert from "./dessert";
 import Pastas from "./pastas";
 import { BtnGeneral, Li, Menu, Ul } from "./styles";
-import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from "react-router-dom";
 
 
 export default function Categories () {
 
-    const {isAuthenticated , loginWithRedirect,  } = useAuth0();
+   
 
     const history = useHistory()
 
     const verCarrito = () => {
-      
-        if(isAuthenticated){
-            history.push('/carrito')
-        } else{
-          loginWithRedirect()
-        }
-       
-      }
+      history.push('/carrito')
+    }
      
 
 
