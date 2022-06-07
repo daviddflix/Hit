@@ -1,20 +1,18 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { ContainerRutas, Link, LinkLogo, MainContainer,ContainerRutasLogin, MenuBar, MenuCart, MobileIcon, PictureAuth0, Wrapper, Greeting, ContainerIconCart } from "./styles";
-import Carrito from "../cart/cart";
 import Context from "../context/Items";
 import { useAuth0 } from "@auth0/auth0-react";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import {  useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {AiOutlineClose} from 'react-icons/ai';
-
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; 
 import logo from './Logos/favicon.ico'
+import { MenuItem } from "@mui/material";
+import {Menu} from '@mui/material'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
      '& .MuiBadge-badge': {
@@ -200,8 +198,8 @@ export default function Nav(){
                'aria-labelledby': 'basic-button'
           }}
           >
-          <MenuItem style={{display: 'flex', flexDirection:'column', padding:'.5rem 1.5rem', color: '#e63946'}} onClick={handleClickProfile}>Perfil</MenuItem>
-          <MenuItem style={{display: 'flex', flexDirection:'column', padding:'.5rem 1.5rem', color: '#e63946'}} >Pedidos</MenuItem>
+          {/* <MenuItem style={{display: 'flex', flexDirection:'column', padding:'.5rem 1.5rem', color: '#e63946'}} onClick={handleClickProfile}>Perfil</MenuItem>
+          <MenuItem style={{display: 'flex', flexDirection:'column', padding:'.5rem 1.5rem', color: '#e63946'}} >Pedidos</MenuItem> */}
           <MenuItem style={{display: 'flex', flexDirection:'column', padding:'.5rem 1.5rem', color: '#e63946'}} onClick={handleClickLogout}>Log out</MenuItem>
           </Menu>
           </div>
@@ -225,17 +223,6 @@ export default function Nav(){
     </IconButton>
     </ContainerIconCart>
     
-    
-   {/* <MenuCart open={closeCart} >
-        <Carrito/>
-     </MenuCart> */}
-
-    
-
-     
-   
-
-  
   </Wrapper>
  </MainContainer>
 

@@ -14,7 +14,7 @@ import { NavLink } from "react-router-dom";
  const CarouselProduct = () =>{
     
    
-    const [value, setValue] = React.useState(5);
+    const [value, setValue] = useState(5);
    
 
   

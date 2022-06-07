@@ -22,8 +22,6 @@ function App() {
 
   const media = window.matchMedia("(max-width:900px)")
    
-   
-
 
     const [closeCart, setCloseCart] = useState(false)
     const [input, setInput] = useState({
@@ -34,8 +32,6 @@ function App() {
       sub: "",
       zona: ""
   })
-
-  console.log('input', input)
 
   const [options, setOptions] = useState({
     toppings: [],
@@ -49,7 +45,7 @@ function App() {
     unit_price: 0,
     quantity: 1,
   });
-  
+
 
   return (
     <Context.Provider value={{closeCart, setCloseCart }}>
@@ -79,7 +75,7 @@ function App() {
              </Route> 
            
  
-              {/* <Route path="/carrito" component={ResumenCarrito} />  */}
+           
               <Route exact path='/carrito'>
              <ResumenCarrito/>
              </Route> 

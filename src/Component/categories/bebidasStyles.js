@@ -100,7 +100,7 @@ export const BtnAdd = styled.button`
 
 export const ContainerButtons = styled.div`
 @media screen and (max-width:900px){
-    /* border: 1px solid rgba(0,0,0,0.20); */
+  
     border-radius: 100px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     width: 90%;

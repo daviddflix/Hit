@@ -1,50 +1,68 @@
 import {  useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { addItem, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, ContainerOption, BtnArmarOtroHit, Description, BoxTitleAndPhoto2Child, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon, Drop } from "./styles"
-import { useAuth0 } from "@auth0/auth0-react";
-import {v4 as uuidv4} from 'uuid'
+import {  addItemDetail, getDetail } from "../../redux/actions"
+import { BoxComentario, BoxTitleAndPhoto, MainBoxBtns, ContainerOption, BtnArmarOtroHit, Description, BoxTitleAndPhoto2Child, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon, Drop } from "./styles"
 import Loading from "../spinner/spinner"
 import { motion } from "framer-motion/dist/framer-motion"
 import OrderContext from "../context/orderContext"
-
+import {v4 as uuidv4} from 'uuid'
 
 
 
 export default function DetailProduct(){
-  const {isAuthenticated , loginWithRedirect,  } = useAuth0();
-    const dispatch = useDispatch()
-    const {id} = useParams()
+ 
+    const dispatch = useDispatch();
+    const {id} = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getDetail(id))
     }, [dispatch, id])
 
     
-     const detail = useSelector(state => state.detail)
-     console.log('detail:', detail)
-     const history = useHistory()
-     
-
+     const detail = useSelector(state => state.detail)// details of the products
      const {options, setOptions} = useContext(OrderContext);
      
 
       const BackToProducts = () => {
          if(options.salsa.length){
-          dispatch(addItem(options))
-         }
-         history.push('/productos')
-      
+          dispatch(addItemDetail(options))
+          setOptions({
+            toppings: [],
+  salsa: [],
+  priceTopping: null,
+  id: '',
+  title: '',
+  price: '',
+  picture_url: '',
+  Comments: '',
+  unit_price: 0,
+  quantity: 1,
+          })
+         } 
+           history.push('/productos')
+         
       }
 
-      const Carrito = () => {
-      
-       
+      const seeCart = () => {
           if(options.salsa.length){
-            dispatch(addItem(options))
-           }
-            history.push('/carrito')
+            dispatch(addItemDetail(options))
+            setOptions({
+              toppings: [],
+    salsa: [],
+    priceTopping: null,
+    id: '',
+    title: '',
+    price: '',
+    picture_url: '',
+    Comments: '',
+    unit_price: 0,
+    quantity: 1,
+            })
+           } 
+             history.push('/carrito')
+           
       }
      
 
@@ -57,28 +75,23 @@ export default function DetailProduct(){
       
          const {name, checked} = e.target
            
-               
-         if(checked === true){
+        if (checked === true){
         options.salsa.length <=1 && setOptions(prev => ({
-                ...prev, salsa: [...prev.salsa, name], picture_url: detail.picture_url, 
-                id: detail.id, price: detail.price, title: detail.title
-              }))
-              
-             
-      }
+            ...prev, salsa: [...prev.salsa, name], picture_url: detail.picture_url, 
+            id: uuidv4(), price: detail.price, title: detail.title
+          }))
+        }
+
+        if(options.salsa.length >= 2){
+          e.target.checked = false
+        }
+        
 
          if(checked === false){
            setOptions(prev => ({
              ...prev, salsa: prev.salsa.filter(p => p !== name)
            }))
          }
-
-         if(options.salsa.length >=2){
-          e.target.checked = false
-                
-        }
-
- 
       }    
 
       const handleToppings = async (e) => {
@@ -86,9 +99,7 @@ export default function DetailProduct(){
         const{name, checked} = e.target
 
         if(checked === true){
-          setOptions(prev => ({
-            ...prev, toppings: [...prev.toppings, name]
-          }))
+          setOptions({...options, toppings: [...options.toppings, name]})
         }
 
         if(checked === false){
@@ -96,46 +107,40 @@ export default function DetailProduct(){
             ...prev, toppings: prev.toppings.filter(p => p !== name)
           }))
         }
-
-        
-
       }
 
-      useEffect(() => {
+      useEffect(() => {   // useEffect to update the total amount
 
-      const producprice = options.price
-      const topprice = options.priceTopping 
+      const productPrice = options.price // price of the single product
+      const toppingPrice = options.priceTopping // price of the topping
      
-          const total = topprice? producprice + topprice : producprice
+          const total = toppingPrice? productPrice + toppingPrice : productPrice
 
-          setOptions(prev => ({...prev, unit_price: total}))
+          setOptions(prev => ({...prev, unit_price: total})) // set total amount product plus toppings
          
       }, [options.price, options.priceTopping, setOptions])
      
 
-      useEffect(() => {
+      useEffect(() => {  // useEffect to update total amount of the toppings
           const numberOfToppings = options.toppings.length 
-          const finalPrice = numberOfToppings !== 0? numberOfToppings * 90 : 0
+          const totalPriceTopping = numberOfToppings !== 0? numberOfToppings * 119 : 0
          
-          setOptions(prev => ({...prev, priceTopping: finalPrice }))
+          setOptions(prev => ({...prev, priceTopping: totalPriceTopping }))
           
         
       }, [options.toppings, setOptions])
 
 
-    
+  
     
     return(
         <MainContainer as={motion.div}  initial={{width: 0, opacity: 0, transition: {duration: '0.1'}}}  animate={{width: '100%', opacity: 1}} exit={{x: window.innerWidth, opacity: 0}}>
-           
-
-           <div style={{position: 'relative',width: '100%', height: '260px'}}>
            
            {
             detail.picture_url?  <PhotoProduct  src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
            }
           <Like onClick={() => {history.push('/productos')}}/>
-          </div>
+        
            
             <Form>
                <ContainerOption>
@@ -186,23 +191,20 @@ export default function DetailProduct(){
                     })
                 }
                 
-                </ContainerOption>
+                </ContainerOption> 
+                 
+            </Form>
 
-                <MainBoxComentario>
+            <MainBoxComentario>
               <h3>Comentarios</h3>
               <BoxComentario type='text' value={options.Comments} onChange={handleComments} placeholder="Agrega instrucciones o comentarios a tu orden"/>
             </MainBoxComentario>
 
-                <div style={{display: 'flex', justifyContent: 'center', position: 'relative', left:'2rem'}}>
+            <MainBoxBtns>
            
-           <Okay onClick={Carrito} >OKAY <CartIcon /></Okay>
-            
+           <Okay onClick={seeCart} >OKAY <CartIcon /></Okay>
            <BtnArmarOtroHit onClick={BackToProducts}>ARMAR OTRO HIT</BtnArmarOtroHit>  
-          </div> 
-                 
-            </Form>
-
-           
+          </MainBoxBtns> 
 
            
       

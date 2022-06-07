@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { getAllCompras, DeleteItem, addItemReview } from "../../redux/actions";
-import { BtnFinalizarCompra,Options, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal } from "./styles"
+import { BtnFinalizarCompra,Options, ContainerButtons, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal } from "./styles"
 import { useAuth0} from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
-import {Buttons, ContainerButtons} from '../categories/bebidasStyles'
+import {Buttons} from '../categories/bebidasStyles'
 import {VscTrash} from 'react-icons/vsc'
 
 
@@ -50,6 +50,7 @@ export default function ResumenCarrito (){
            <ContainerProduct>
              {
                cart && cart.map((p, i) => {
+                 console.log('i:', i)
                  return(
                   <Card key={i} picture_url={`https://hit-pasta.herokuapp.com/${p.picture_url}`} 
                   product={p.title}
@@ -88,7 +89,7 @@ function Card({product, salsas, unit_price, toppings, picture_url, id}){
   const dispatch = useDispatch()
   
   const cart = useSelector(state => state.cart)
-console.log('cart', cart)
+
 
     const ProductNumberIncrement = () => {
       dispatch(addItemReview(id))
@@ -122,15 +123,16 @@ console.log('cart', cart)
      <Options>
      {toppings}
      </Options>
-   
 
-    </ContainerInfo2>
      <Unitprice><CurrencyFormat  fixedDecimalScale={true} value={unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></Unitprice>
-   <ContainerButtons>
+    </ContainerInfo2>
+
+    <ContainerButtons>
      <Buttons onClick={deleteItem}><VscTrash  style={{width: '15px', height: '15px'}}/></Buttons>
      <Buttons>{realQuantity}</Buttons>
      <Buttons onClick={ProductNumberIncrement}>+</Buttons>
    </ContainerButtons>
+    
   </ContainerInfo>
   
  

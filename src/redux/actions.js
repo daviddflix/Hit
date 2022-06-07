@@ -10,6 +10,7 @@ export const LINK_PAYMENT= 'LINK_PAYMENT'
 export const CLEAR_STORAGE = 'CLEAR_STORAGE'
 export const REMOVE_QUANTITY = 'REMOVE_QUANTITY'
 export const ADD_ITEM_TO_CART_REVIEW = 'ADD_ITEM_TO_CART_REVIEW'
+export const ADD_ITEM_TO_CART_DETAILS = 'ADD_ITEM_TO_CART_DETAILS'
 
 
 const url= 'https://hit-pasta.herokuapp.com'   
@@ -129,6 +130,14 @@ export function postCompra (payload){
          payload: value
      }
  }
+
+ export function addItemDetail(value){
+   
+    return{
+        type:ADD_ITEM_TO_CART_DETAILS,
+        payload: value
+    }
+}
 
  export function removeQuantity(value){
     

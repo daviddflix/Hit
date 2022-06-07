@@ -1,6 +1,6 @@
 
 import storage from "redux-persist/lib/storage"
-import { ADD_ITEM_TO_CART, ADD_ITEM_TO_CART_REVIEW, CLEAR_STORAGE, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER, LINK_PAYMENT, REMOVE_QUANTITY } from "./actions"
+import { ADD_ITEM_TO_CART, ADD_ITEM_TO_CART_DETAILS, ADD_ITEM_TO_CART_REVIEW, CLEAR_STORAGE, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER, LINK_PAYMENT, REMOVE_QUANTITY } from "./actions"
 
 
 const InicialState ={
@@ -8,7 +8,6 @@ const InicialState ={
   detail: {},
   userDetails: [],
   cart: [],
-  cartFinal: [],
   link: ''
 }
 
@@ -37,7 +36,7 @@ const InicialState ={
     }
   }
   if(action.type === ADD_ITEM_TO_CART){
-    console.log('reducer', action.payload)
+   
 
     const obj = state.cart.find(p => p.id === action.payload.id)
 
@@ -77,6 +76,15 @@ const InicialState ={
    
     return{
       ...state,
+      cart: [...state.cart, action.payload]
+      
+    }
+  }
+
+  if(action.type === ADD_ITEM_TO_CART_DETAILS){
+  
+    return{
+     ...state,
       cart: [...state.cart, action.payload]
       
     }

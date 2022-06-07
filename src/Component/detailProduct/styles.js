@@ -6,50 +6,28 @@ import {BiDroplet} from 'react-icons/bi'
 
 export const MainContainer = styled.div`
 
- width: 100%;
- display: flex;
- /* color: #f5f6f8; */
 
-
-@media screen and (max-width:900px){
-        /* height: 100vh; */
-        width: 90%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-       text-align: left;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI';
-        background-color: #f5f6f8;
         color: '#fff'
-       
-}
+
 `;
 
 export const Form = styled.form`
  
         width: 100%;
-        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         border-radius: 50px 50px 0 0;
-      
         z-index: 10;
         background-color: #fff;
-
-
-@media screen and (max-width:900px){
-        
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        /* align-items: flex-start; */
-        border-radius: 50px 50px 0 0;
-       
-        z-index: 10;
-        background-color: #fff;
-        
-}
+        position: relative;
+        bottom: 2.5rem;
+        text-align: left;
 `;
 
 
@@ -83,23 +61,7 @@ export const ContainerOption = styled.div`
 `;
 
 export const ContainerOptionChild = styled.div`
-  display: grid;
-        grid-template-columns: repeat(3, 2fr);
-        grid-column-gap: 1rem;
-        justify-content: center;
-        align-content: center;
-        padding: 15px;
-        width: 90%;
-        height: 70px;
-        position: relative;
-        // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        border-top: none;
-        background-color: #fff;
-        // border-radius: 10px;
-        border-bottom: 1px solid #f5f6f8;
-        position: relative;
-        left: 1rem;
- @media screen and (max-width: 900px) {
+
         display: grid;
         grid-template-columns: repeat(3, 2fr);
         grid-column-gap: 1rem;
@@ -117,7 +79,7 @@ export const ContainerOptionChild = styled.div`
         position: relative;
         left: 1rem;
         
- }
+ 
 `;
 
 export const InputOptions = styled.input`
@@ -141,26 +103,7 @@ export const InputOptions = styled.input`
  }
 `;
 
-export const MainBoxComentario = styled.div`
- width: 90vw;
-         
-         margin-bottom: 2rem;
-        display: flex;
-       flex-direction: column;
-        align-items: center; 
 
-   @media screen and (max-width: 600px) {
-        width: 90vw;
-         position: relative;
-         left: 1rem;
-          margin-bottom: 2rem;
-         display: flex;
-        flex-direction: column;
-         align-items: center; 
-       
-   }
-
-`;
 
 
 
@@ -198,6 +141,23 @@ export const BoxTitleAndPhoto2Child = styled.div`
 
 `;
 
+export const MainBoxComentario = styled.div`
+  width: 90%;
+          margin-bottom: 2rem;
+         display: flex;
+        flex-direction: column;
+         align-items: center; 
+
+   @media screen and (max-width: 600px) {
+         width: 90%;
+          margin-bottom: 2rem;
+         display: flex;
+        flex-direction: column;
+         align-items: center; 
+       
+   }
+
+`;
 
 export const BoxComentario = styled.textarea`
  padding: 30px;
@@ -221,24 +181,14 @@ export const BoxComentario = styled.textarea`
  }
 `;
 
-export const Okay = styled.button`
-  padding: 20px 30px;
-        margin-bottom: 2rem;
-        background-color: #282828;
-        color: #fff;
-        border: none;
-        margin-left: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        display: flex;
-       
-        align-items: center;
+export const MainBoxBtns = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-around;
+`;
 
-        :hover{
-                background-color: black;
-        }
-         
- @media screen and (max-width: 900px) {
+export const Okay = styled.button`
+
         background-color: #29d884;
         color: #fff;
         border: none;
@@ -253,20 +203,11 @@ export const Okay = styled.button`
         justify-content: center;
         
          
- }
+ 
 `;
 
 export const BtnArmarOtroHit = styled.button`
-    padding: 20px 30px;
-        margin-bottom: 2rem;
-        background-color: #282828;
-        color: #fff;
-        border: none;
-        margin-left: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        z-index: 10;
- @media screen and (max-width: 900px) {
+
         background-color: #29d884;
         color: #fff;
         border: none;
@@ -277,21 +218,20 @@ export const BtnArmarOtroHit = styled.button`
         margin-bottom: 5rem;
         border-radius: 10px;
          
- }
+ 
 `;
 
 export const PhotoProduct = styled.img`
-        width: 500px;
-        height: 350px;
-        border-radius: 10px;
-        margin: 2rem;
- @media screen and (max-width: 900px) {
-        width: 100%;
+
+         width: 100%;
         height: 350px;
         border-radius: 0 0 10px 10px;
         margin: 0;
+        position: relative;
         
- }
+       
+        
+ 
 `;
 
 

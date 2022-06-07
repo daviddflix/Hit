@@ -33,7 +33,7 @@ export const ContainerProduct = styled.div`
  align-items: center;
  justify-content: space-around;
  margin: 1rem;
- width: 70%
+ width: 90%
 
 }
 `;
@@ -61,12 +61,24 @@ export const ContainerInfo = styled.div`
 
 export const ContainerInfo2 = styled.div`
   display: flex;
-  width: 80%;
-  align-items: flex-start;
-  justify-content: space-around;
+  width: 100%;
+  align-items:flex-start;
   flex-direction: column;
   margin: 0;
-`
+`;
+
+export const ContainerButtons = styled.div`
+@media screen and (max-width:900px){
+  
+    border-radius: 100px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 50%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+ 
+}
+`;
 
 export const BtnFinalizarCompra = styled.button`
 @media screen and (max-width: 900px){
@@ -100,10 +112,11 @@ export const ButtonVerCarrito = styled.button`
 
 export const Title = styled.h4`
 @media screen and (max-width: 900px){
-color: #282828;
-margin-bottom: 5px;
-width: 100%;
+color: black;
+margin :0;
 font-size: 11px;
+display:block;
+
 }
 `;
 
@@ -121,12 +134,11 @@ export const ContainerTotal = styled.div`
 export const Options = styled.div`
 @media screen and (max-width: 900px){
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin: 5px;
   font-size: 12px;
   width: 100%;
-  justify-content: flex-start;
-  
+  flex-wrap: wrap;
   
 }
 `;
@@ -135,12 +147,11 @@ export const OptionItems = styled.h4`
 @media screen and (max-width: 900px){
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin: 0;
-  font-size: 12px;
-  width: 100%;
-  justify-content: space-around;
-  
-  
+  margin-right: 5px;
+  font-size: 12px;  
+ 
 }
 `;
 

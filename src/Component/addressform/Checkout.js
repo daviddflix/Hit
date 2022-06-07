@@ -76,7 +76,6 @@ export default function Checkout() {
     e.preventDefault()
     dispatch(postCompra({cart, input}))
     dispatch(getLinkPayment({cart, input}))
-    // dispatch(getNotification({cart,user}))
 }
 
   const resetCart = () => {
