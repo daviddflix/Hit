@@ -29,7 +29,7 @@ function App() {
       nombre: "",
       direccion: "",
       numero: "",
-      email: "",
+      method: "",
       zona: ""
   })
 

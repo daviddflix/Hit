@@ -18,12 +18,7 @@ export default function ResumenCarrito (){
   const history = useHistory()
 
   const ProcederAlPago = async () => {
-     if(isAuthenticated){
-      history.push('/formPago')
-     } else {
-       loginWithRedirect()
-     }
-      
+    history.push('/formPago') 
   }
 
   useEffect(() => {

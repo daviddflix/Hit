@@ -27,9 +27,13 @@ const handleInput = (e) => {
 const handleZona = (e) => {
     setInput(prev => ({...prev, zona: e.target.value }))
   }
+
+  const handleMethod = (e) => {
+    setInput(prev => ({...prev, method: e.target.value }))
+  }
   
   const backToProducts = () => {
-    history.push('/productos')
+    history.push('/carrito')
  }
  
  const priceProduct = cart.map(p => p.unit_price)
@@ -41,13 +45,13 @@ const handleZona = (e) => {
 
  const items = cart && cart.map((p, i) => {
     return(
-      `${p.title}%0A${p.salsa && p.salsa.map(item =>JSON.stringify(item))}%0A${p.toppings && p.toppings.map(item => JSON
-        .stringify(item))}%0A${p.quantity}%0A${p.Comments}`
+      `${p.title}%0A${p.salsa && p.salsa.map(item =>JSON.stringify(item, null, 2))}%0A${p.toppings && p.toppings.map(item => JSON
+        .stringify(item))}%0A${p.quantity}%0A${p.Comments && p.Comments}`
      
     )
 })
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0AGracias%20por%20tu%20compra%20${input.nombre}!%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A${JSON.stringify(items)}%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0ATotal:%20$${total}`
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A%0A${JSON.stringify(items)}%0A%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago%20${input.method}%0ATotal:%20$${total}`
 
     return(
         <MainContainer>
@@ -89,7 +93,7 @@ const handleZona = (e) => {
           />
         </Grid>
         <div style={{position: 'relative', left: '1rem', top: '.6rem'}}>
-        <FormControl variant="outlined" sx={{ m: 1, minWidth: 120 }}>
+        <FormControl variant="outlined" sx={{ m: 1, minWidth: 180 }}>
         <InputLabel id="demo-simple-select-standard-label">Zona</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
@@ -128,20 +132,27 @@ const handleZona = (e) => {
             
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="email"
-            name="email"
-            label="Email"
-            fullWidth
-            variant="outlined"
-            onChange={handleInput}
-            value={input.email}
-            required
-            color='success'
-            sx={{input: {color: '#282828'}}}
-          />
-        </Grid>
+        <div style={{position: 'relative', left: '1rem', top: '.6rem'}}>
+        <FormControl variant="outlined" sx={{ m: 1, minWidth: 180 }}>
+        <InputLabel id="demo-simple-select-standard-label">Metodo de Pago</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={input.mathod}
+          onChange={handleMethod}
+          label="Metodo de Pago"
+          color='success'
+          
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem  value='Efectivo'>Efectivo</MenuItem>
+          <MenuItem value='Mercado Pago'>Mercado Pago</MenuItem>
+        </Select>
+      </FormControl>
+        </div>
+
        
       </Grid>
   <A href={link}>
