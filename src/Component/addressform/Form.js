@@ -39,6 +39,23 @@ const handleZona = (e) => {
   return prev + curr 
  }, 0)
 
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0AGracias%20por%20tu%20compra ${input.nombre}!%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A${cart && cart.map((p, i) => {
+      return(
+        <div key={i}>
+        <h4>{p.title}</h4>
+         <div>
+             {p.salsa && p.salsa.map(item => <li>{item}</li>)}
+         </div>
+         <div>
+             {p.toppings && p.toppings.map(item => item)}
+         </div>
+         <h4>{p.quantity}</h4>
+         <h4>{p.Comments}</h4>
+        </div>
+      )
+  })}%0ANombre: ${input.nombre}%0ACalle: ${input.direccion}%0ATelefono: ${input.numero}%0AZona: ${input.zona}%0ATotal:${<CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+} `
+
     return(
         <MainContainer>
               <ArrowLeft onClick={backToProducts}/>
@@ -134,22 +151,7 @@ const handleZona = (e) => {
         </Grid>
        
       </Grid>
-  <A href={`https://wa.me/5491137858227?text=HIT%20PASTA<br>Gracias%20por%20tu%20compra ${input.nombre}!<br>SOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP<br>${cart && cart.map((p, i) => {
-      return(
-        <div key={i}>
-        <h4>{p.title}</h4>
-         <div>
-             {p.salsa && p.salsa.map(item => item)}
-         </div>
-         <div>
-             {p.toppings && p.toppings.map(item => item)}
-         </div>
-         <h4>{p.quantity}</h4>
-         <h4>{p.Comments}</h4>
-        <CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-        </div>
-      )
-  })}`}>
+  <A href={link}>
       <Button disabled={!input.nombre || !input.numero || !input.direccion || !input.zona || !input.email || !cart.length }>FINALIZAR PEDIDO</Button></A>
      
         </MainContainer>
