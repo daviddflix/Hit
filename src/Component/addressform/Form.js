@@ -17,8 +17,7 @@ export default function Form(){
     const history = useHistory()
     const {input, setInput} = useContext(userContext)
     let cart = useSelector(state => state.cart);
-console.log('input', input)
-console.log('cart', cart)
+
 
 const handleInput = (e) => {
     setInput(prev=> ({...prev, [e.target.name]: e.target.value}))
@@ -38,22 +37,25 @@ const handleZona = (e) => {
  const total =   priceProduct.reduce((prev, curr) => {
   return prev + curr 
  }, 0)
+ console.log('cart', cart)
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0AGracias%20por%20tu%20compra ${input.nombre}!%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A${cart && cart.map((p, i) => {
-      return(
-        <div key={i}>
-        <h4>{p.title}</h4>
-         <div>
-             {p.salsa && p.salsa.map(item => <li>{item}</li>)}
-         </div>
-         <div>
-             {p.toppings && p.toppings.map(item => item)}
-         </div>
-         <h4>{p.quantity}</h4>
-         <h4>{p.Comments}</h4>
-        </div>
-      )
-  })}%0ANombre: ${input.nombre}%0ACalle: ${input.direccion}%0ATelefono: ${input.numero}%0AZona: ${input.zona}%0ATotal:${<CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+ const items = cart && cart.map((p, i) => {
+    return(
+      `<div>
+      <h4>${p.title}</h4>
+       <div>
+           {p.salsa && p.salsa.map(item => <li>{item}</li>)}
+       </div>
+       <div>
+           {p.toppings && p.toppings.map(item => item)}
+       </div>
+       <h4>${p.quantity}</h4>
+       <h4>${p.Comments}</h4>
+      </div>`
+    )
+})
+
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0AGracias%20por%20tu%20compra%20${input.nombre}!%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A${items}%0ANombre: ${input.nombre}%0Direccion: ${input.direccion}%0ATelefono: ${input.numero}%0AZona: ${input.zona}%0ATotal: $${total} />
 } `
 
     return(
@@ -84,7 +86,7 @@ const handleZona = (e) => {
             required
             id="direccion"
             name="direccion"
-            label="Direccion"
+            label="Direccion Completa"
             fullWidth
             value={input.direccion}
             autoComplete="shipping address-line1"
