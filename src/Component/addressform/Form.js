@@ -41,22 +41,13 @@ const handleZona = (e) => {
 
  const items = cart && cart.map((p, i) => {
     return(
-      `<div>
-      <h4>${p.title}</h4>
-       <div>
-           ${p.salsa && p.salsa.map(item => <li key={i}>{item}</li>)}
-       </div>
-       <div>
-           ${p.toppings && p.toppings.map(item => item)}
-       </div>
-       <h4>${p.quantity}</h4>
-       <h4>${p.Comments}</h4>
-      </div>`
+      `${p.title}%0A${p.salsa && p.salsa.map(item =>JSON.stringify(item))}%0A${p.toppings && p.toppings.map(item => JSON
+        .stringify(item))}%0A${p.quantity}%0A${p.Comments}`
+     
     )
 })
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A${JSON.stringify(items)}%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0ATotal:%20$${total}`
- const link1 =`https://wa.me/number?text=Gracias%20por%20tu%20compra%20${input.nombre}!%0A${items}%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0ATotal:%20$${total}`
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0AGracias%20por%20tu%20compra%20${input.nombre}!%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A${JSON.stringify(items)}%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0ATotal:%20$${total}`
 
     return(
         <MainContainer>
