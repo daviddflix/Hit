@@ -1,4 +1,4 @@
-import { MainContainer, ContainerInfo, Img, Schedule } from "./styles";
+import { MainContainer, ContainerInfo, Img, Schedule, InstagramIcon,ContainerIcons } from "./styles";
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import logo from './Images/logo.png'
@@ -27,7 +27,10 @@ export default function Footer (){
              <a href="https://www.instagram.com/hitpasta/"><InstagramIcon/></a>
              <a href="https://www.facebook.com/hitpasta"><FacebookIcon/></a>
           </ContainerIcons> */}
-          <Img src={logo} alt='logo' />
+         <ContainerIcons>
+         <Img src={logo} alt='logo' />
+         <a href="https://www.instagram.com/hitpasta/"><InstagramIcon/></a>
+         </ContainerIcons>
           
           <ContainerInfo>
               <Schedule>Estamos abiertos todos los dias, de 12hs a 24hs</Schedule>

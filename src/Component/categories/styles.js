@@ -26,7 +26,7 @@ export const MainContainer = styled.div`
 export const Img = styled.img`
     height: 150px;
     width: 150px;
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
         height: 100%;
         width: 35%;
         border-radius: 5px;
@@ -38,7 +38,7 @@ export const Img = styled.img`
 
 export const Container = styled.div`
    
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     flex-direction: row;
     display: flex;
@@ -56,7 +56,7 @@ export const Container = styled.div`
 
 export const ContainerInfo = styled.div`
    
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
    
     flex-direction: column;
     display: flex;

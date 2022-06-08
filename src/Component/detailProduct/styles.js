@@ -50,7 +50,7 @@ export const ContainerOption = styled.div`
          width: 100%;
          position: relative;
  
- @media screen and (max-width: 600px){
+ @media screen and (max-width: 900px){
          display: flex;
          flex-direction: column;
          align-items: flex-start;
@@ -71,10 +71,8 @@ export const ContainerOptionChild = styled.div`
         width: 90%;
         height: 70px;
         position: relative;
-        // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-top: none;
         background-color: #fff;
-        // border-radius: 10px;
         border-bottom: 1px solid #f5f6f8;
         position: relative;
         left: 1rem;
@@ -109,7 +107,7 @@ export const InputOptions = styled.input`
 
 export const BoxTitleAndPhoto = styled.div`
 
-   @media screen and (max-width: 600px) {
+   @media screen and (max-width: 900px) {
         width: 100%;
         display: flex;
         align-items: flex-start;
@@ -148,7 +146,7 @@ export const MainBoxComentario = styled.div`
         flex-direction: column;
          align-items: center; 
 
-   @media screen and (max-width: 600px) {
+   @media screen and (max-width: 900px) {
          width: 90%;
           margin-bottom: 2rem;
          display: flex;
@@ -184,7 +182,8 @@ export const BoxComentario = styled.textarea`
 export const MainBoxBtns = styled.div`
 display: flex;
 align-items: center;
-justify-content: space-around;
+justify-content: center;
+width: 100%;
 `;
 
 export const Okay = styled.button`
@@ -192,12 +191,12 @@ export const Okay = styled.button`
         background-color: #29d884;
         color: #fff;
         border: none;
-        margin-left: 2rem;
+       
         width: 120px;
         height: 40px;
-        padding: 10px;
+        padding: 15px 25px;
         margin-bottom: 5rem;
-        border-radius: 10px;
+        border-radius: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -214,9 +213,12 @@ export const BtnArmarOtroHit = styled.button`
         margin-left: 2rem;
         width: 50%;
         height: 40px;
-        padding: 10px;
+        padding: 15px 25px;
         margin-bottom: 5rem;
-        border-radius: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
          
  
 `;

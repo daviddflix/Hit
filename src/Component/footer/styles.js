@@ -16,17 +16,18 @@ export const  ContainerIcons = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  
 `;
 
 export const  InstagramIcon = styled(BsInstagram)`
-    /* color: #fff; */
-    /* background: #d6249f; */
-    /* background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); */
+    color: #fff;
     width: 25px;
     height: 25px;
-    margin: 1rem;
+    margin-left: 1rem;
     border-radius: 40%;
-    /* box-shadow: 0px 3px 10px rgba(0,0,0,25); */
+    position: relative;
+    top: 2px ;
 `;
 
 export const FacebookIcon = styled(FaFacebookSquare)`
@@ -45,13 +46,11 @@ export const ContainerInfo = styled.div`
 export const Img = styled.img`
    background-color: transparent;
    background: transparent;
-   position: relative;
- 
-   top: 1rem;
    margin: 0;
 `;
 
 export const Schedule = styled.h4`
   font-size: 13px;
+ 
 `;
 

@@ -5,7 +5,7 @@ import {  ButtonBack, ButtonNext } from 'pure-react-carousel';
 export const Titulo = styled.p`
 	
 
-	@media screen and (max-width: 600px ) {
+	@media screen and (max-width: 900px) {
 	font-size: 18px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -38,7 +38,7 @@ export const  MainContainer = styled.div`
 export const  Menu = styled.div`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
     padding: 10px;
 }
 `;
@@ -70,7 +70,7 @@ export const  NavLink = styled(Link)`
 
 export const TextoSlide = styled.div`
 	
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 900px) {
         display: flex;
         flex-direction: column;
 		background: #fff;
@@ -93,7 +93,7 @@ export const TextoSlide = styled.div`
 export const  ContainerButton = styled.div`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ export const  ContainerButton = styled.div`
 export const  Buttons = styled.div`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +126,7 @@ export const  Text = styled.h2`
 export const  ButtonAddToCart = styled(Link)`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
     color: #fff;
     padding: 1rem 2rem;
     font-size: 14px;
@@ -148,7 +148,7 @@ export const  ButtonAddToCart = styled(Link)`
 export const  Arrow = styled.button`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
     color: black;
     padding:8px 14px 8px 14px;
     border: 1px solid black;
@@ -166,7 +166,7 @@ export const  Arrow = styled.button`
 export const  ProductNumber = styled.p`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
     color: black;
     padding: 8px 14px 8px 14px;
     border-top: 1px solid black;
