@@ -55,7 +55,7 @@ const handleZona = (e) => {
     )
 })
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0AGracias%20por%20tu%20compra%20${input.nombre}!%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A%0ANombre:%20${input.nombre}%0Direccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0ATotal:%20$${total}`
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0DGracias%20por%20tu%20compra%20${input.nombre}!%0DSOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0DNombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0ATotal:%20$${total}`
 
     return(
         <MainContainer>
