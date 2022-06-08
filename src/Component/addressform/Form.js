@@ -67,14 +67,14 @@ const handleZona = (e) => {
    
    
     return(
-      `${p.title}%0A${salsas}%20${toppings}%20${p.quantity}%20${p.Comments? p.Comments: ''}`
+      `${p.title}%0A${salsas}%0A${toppings}%0A${p.quantity}%0A${p.Comments? p.Comments: ''}`
      
     )
 })
 
 console.log('items', items)
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A%0A${JSON.stringify(items)}%0A%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago:%20${input.method}%0ATotal:%20$${total}%0A%0ATe%20estaremos%20informando%tan%20pronto%20tu%20pedido%20sea%20despachado`
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0A${JSON.stringify(items)}%0A%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago:%20${input.method}%0ATotal:%20$${total}%0A%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A%0A`
 
     return(
         <MainContainer>
