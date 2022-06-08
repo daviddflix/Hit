@@ -1,69 +1,42 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
+import { useContext } from "react";
+import userContext from "../context/userContext";
+import { MainContainer, Button } from "./FormStyles";
 import TextField from '@mui/material/TextField';
-
-import { useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch, useSelector } from "react-redux";
-import {  getLinkPayment, postCompra, postUser } from "../../redux/actions";
-import { useHistory } from "react-router-dom";
-import userContext from '../context/userContext';
+import Grid from '@mui/material/Grid';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-export default function AddressForm() {
+export default function Form(){
 
-    const { user } = useAuth0();
-    let cart = useSelector(state => state.cart);
+    const {input, setInput} = useContext(userContext)
+console.log('input', input)
 
-    let link = useSelector(state => state.link);
-    const dispatch = useDispatch()
-   
-
-    const {input, setInput} = React.useContext(userContext)
-    
-    useEffect(() => {
-     if(user){
-         setInput(prev => ({...prev, sub: user.sub}))
-     }
-    },[user])
-
-    useEffect(() => {
-       if(input.direccion && input.email && input.nombre && input.zona && input.numero && input.sub){
-        dispatch(postUser(input))
-       }
-    }, [input, dispatch])
+const handleInput = (e) => {
+    setInput(prev=> ({...prev, [e.target.name]: e.target.value}))
+}
 
 
-    const handleInput = (e) => {
-        setInput(prev=> ({...prev, [e.target.name]: e.target.value}))
-    }
+const handleZona = (e) => {
+    setInput(prev => ({...prev, zona: e.target.value }))
+  }
+  
+  const handlePedido = () => {
 
-    const total = cart.map(p => p.unit_price)
-    
-    const priceProduct =   total.reduce((prev, curr) => {
-     return prev + curr 
-    }, 0)
+  }
 
-    const handleZona = (e) => {
-      setInput(prev => ({...prev, zona: e.target.value }))
-    }
+    return(
+        <MainContainer>
+            <h3>Direccion de Envio</h3>
 
-
-
-  return (
-    <div  >
-      <React.Fragment>
-      <h3>Direccion de envio</h3>
-      <Grid container spacing={3}>
+            <Grid container spacing={3} width={'90%'}>
         <Grid item xs={12} sm={6}>
           <TextField
             required
             id="tel"
-            name="Telefono"
+            name="numero"
             label="Telefono"
             fullWidth
             autoComplete="telefono"
@@ -148,7 +121,8 @@ export default function AddressForm() {
         </Grid>
        
       </Grid>
-    </React.Fragment>
-    </div>
-  );
+  <Button href="https://wa.me/5491137858227?text=I%20am%20interested%20in%20your%20services.%20How%20to%20get%20started%3F">Finalizar pedido</Button>
+     
+        </MainContainer>
+    )
 }

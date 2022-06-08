@@ -12,11 +12,12 @@ import {  useState } from 'react';
 import Context from './Component/context/Items';
 import UserProfile from './Component/profile/userProfile';
 import ResumenCarrito from './Component/resumenCarrito/carrito';
-import Checkout from './Component/addressform/Checkout'
+
 import userContext from './Component/context/userContext';
 import OrderContext from './Component/context/orderContext';
 import MessageMedia from './Component/MessajeMedia';
 import NoMatch from './Component/404/404';
+import Form from './Component/addressform/Form';
 
 function App() {
 
@@ -29,7 +30,6 @@ function App() {
       direccion: "",
       numero: "",
       email: "",
-      sub: "",
       zona: ""
   })
 
@@ -81,7 +81,7 @@ function App() {
              </Route> 
  
              <Route exact path='/formPago'>
-             <Checkout/>
+             <Form/>
              </Route>    
  
              <Route exact path='/detail/:id'>

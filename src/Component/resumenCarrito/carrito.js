@@ -50,7 +50,7 @@ export default function ResumenCarrito (){
            <ContainerProduct>
              {
                cart && cart.map((p, i) => {
-                 console.log('i:', i)
+              
                  return(
                   <Card key={i} picture_url={`https://hit-pasta.herokuapp.com/${p.picture_url}`} 
                   product={p.title}
