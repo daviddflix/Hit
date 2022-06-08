@@ -48,12 +48,12 @@ const handleZona = (e) => {
 
  const items = cart && cart.map((p, i) => {
     
-    let salsas =  p.salsa ? p.salsa.toString() : ''
-    let toppings =  p.toppings ? p.toppings.toString() : ''
+    let salsas =  p.salsa ? p.salsa.join(' ') : ''
+    let toppings =  p.toppings ? p.toppings.join(' ') : ''
    
    console.log('salsas', salsas)
     return(
-      `${p.title}%0A${salsas}%0A${toppings}%0A${p.quantity}%0A${p.Comments? p.Comments: ''}`
+      `${p.title}%0A${p.salsa ? `${salsas}%0A${toppings}%0A`: ''}${p.quantity}%0A${p.Comments? p.Comments: ''}`
      
     )
 })
