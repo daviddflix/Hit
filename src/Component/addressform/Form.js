@@ -9,7 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import CurrencyFormat from 'react-currency-format';
+
 
 
 export default function Form(){
@@ -144,9 +144,7 @@ const handleZona = (e) => {
           color='success'
           
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+          
           <MenuItem  value='Efectivo'>Efectivo</MenuItem>
           <MenuItem value='Mercado Pago'>Mercado Pago</MenuItem>
         </Select>
@@ -156,7 +154,7 @@ const handleZona = (e) => {
        
       </Grid>
   <A href={link}>
-      <Button disabled={!input.nombre || !input.numero || !input.direccion || !input.zona || !input.email || !cart.length }>FINALIZAR PEDIDO</Button></A>
+      <Button disabled={!input.nombre || !input.numero || !input.direccion || !input.zona || !input.method || !cart.length }>FINALIZAR PEDIDO</Button></A>
      
         </MainContainer>
     )
