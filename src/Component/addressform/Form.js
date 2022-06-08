@@ -41,7 +41,7 @@ const handleZona = (e) => {
 
  const items = cart && cart.map((p, i) => {
     return(
-      <div key={i}>
+      `<div>
       <h4>${p.title}</h4>
        <div>
            ${p.salsa && p.salsa.map(item => <li key={i}>{item}</li>)}
@@ -51,7 +51,7 @@ const handleZona = (e) => {
        </div>
        <h4>${p.quantity}</h4>
        <h4>${p.Comments}</h4>
-      </div>
+      </div>`
     )
 })
 
