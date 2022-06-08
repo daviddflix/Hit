@@ -41,17 +41,40 @@ const handleZona = (e) => {
  const total =   priceProduct.reduce((prev, curr) => {
   return prev + curr 
  }, 0)
+
+
  console.log('cart', cart)
 
- const items = cart && cart.map((p, i) => {
+ let salsas = cart && cart.map(item => {
+     return(
+        item.salsa && item.salsa.map(p => p)
+     )
+ })
+
+ let toppings = cart && cart.map(item => {
     return(
-      `${p.title}%0A${p.salsa && p.salsa.map(item =>JSON.stringify(item, null, 2))}%0A${p.toppings && p.toppings.map(item => JSON
-        .stringify(item))}%0A${p.quantity}%0A${p.Comments && p.Comments}`
+       item.toppings && item.toppings.map(p => p)
+    )
+})
+ 
+ salsas.join(',')
+ toppings.join(',')
+
+ const items = cart && cart.map((p, i) => {
+    
+    let salsas =  p.salsa ? p.salsa.map(p => p) : ''
+    let toppings =  p.toppings ? p.toppings.map(p => p) : ''
+   
+   
+    return(
+      `${p.title}%0A${salsas}%20${toppings}%20${p.quantity}%20${p.Comments? p.Comments: ''}`
      
     )
 })
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A%0A${JSON.stringify(items)}%0A%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago%20${input.method}%0ATotal:%20$${total}`
+console.log('items', items)
+
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0ASOLO%20FALTA%20PRESIONAR%20EN%20ENVIAR%20EN%20TU%20WHATSAPP%0A%0A${JSON.stringify(items)}%0A%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago:%20${input.method}%0ATotal:%20$${total}%0A%0ATe%20estaremos%20informando%tan%20pronto%20tu%20pedido%20sea%20despachado`
 
     return(
         <MainContainer>
@@ -104,9 +127,7 @@ const handleZona = (e) => {
           color='success'
           
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+         
           <MenuItem  value='Belgrano'>Belgrano</MenuItem>
           <MenuItem value='San Isidro'>San Isidro</MenuItem>
           <MenuItem value='Martinez'>Martinez</MenuItem>
@@ -138,7 +159,7 @@ const handleZona = (e) => {
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={input.mathod}
+          value={input.method}
           onChange={handleMethod}
           label="Metodo de Pago"
           color='success'
