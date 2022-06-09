@@ -39,7 +39,7 @@ export default function ResumenCarrito (){
             
            <ContainerProduct>
              {
-               cart && cart.map((p, i) => {
+               cart.length ? cart.map((p, i) => {
               
                  return(
                   <Card key={i} picture_url={`https://hit-pasta.herokuapp.com/${p.picture_url}`} 
@@ -50,7 +50,7 @@ export default function ResumenCarrito (){
                   toppings={p.toppings && p.toppings.map((p, i) => <OptionItems key={i}>{p}</OptionItems>)}
                   />
                  )
-               })
+               }) : <h3>No hay productos en tu carrito</h3>
              }
 
            </ContainerProduct>
