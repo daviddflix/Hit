@@ -4,7 +4,7 @@ import {RiArrowLeftSLine} from 'react-icons/ri'
 
 export const MainContainer = styled.div`
 @media screen and (max-width: 900px){
-
+ min-height: 100vh;
  display: flex;
  flex-direction: column;
  justify-content: space-around;
