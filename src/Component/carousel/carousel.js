@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { CarouselProvider, Slider, Slide,  } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { Img } from './styles';
+import Loading from '../spinner/spinner';
 
 
 
@@ -21,9 +22,9 @@ export default class Carouselp extends Component {
     isPlaying={true}
   >
     <Slider >
-      <Slide index={0}> <Img  src={img}/> </Slide>
-      <Slide index={1}> <Img  src={img2}/> </Slide>
-      <Slide index={1}> <Img  src={img3}/> </Slide>
+      <Slide index={0}> <Img  src={img ? img : <Loading/>}/> </Slide>
+      <Slide index={1}> <Img  src={img2? img2 : <Loading/>}/> </Slide>
+      <Slide index={1}> <Img  src={img3? img3 : Loading}/> </Slide>
     </Slider>
    
   </CarouselProvider> 

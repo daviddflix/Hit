@@ -54,8 +54,9 @@ import { NavLink } from "react-router-dom";
                
             >
                 <Slider>
+                   
                       {
-                        product? product?.map((p, i)=> {
+                            product.length? product?.map((p, i)=> {
                              return(
                                 <NavLink key={i} to={`detail/${p.id}`}>
                               <Slide index={p.id} key={p.id}>
@@ -80,6 +81,7 @@ import { NavLink } from "react-router-dom";
                              )
                           }): <Loading/>
                         }
+                       
                 </Slider>
                <ArrowLeft><IoIosArrowBack style={{width: '22px', height: '22px'}}/></ArrowLeft>
                <ArrowRight><IoIosArrowForward style={{width: '22px', height: '22px'}}/></ArrowRight>

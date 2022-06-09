@@ -27,14 +27,14 @@ export default function Pastas(){
         
           
            <h3>ELIGE TU HIT</h3>
-           <div>
+           <div style={{ minHeight: '100vh'}}>
            {
-              productos? productos.map(p => {
+              productos.length? productos.map(p => {
                  return(
                    <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none', }}>
                  
                   <Container >
-                  <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} />
+                  <Img src={ `https://hit-pasta.herokuapp.com/${p.picture_url}` } />
                   
                         <ContainerInfo >
                           <Title>{p.title}</Title>

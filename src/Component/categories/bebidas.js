@@ -37,7 +37,7 @@ export default function Drinks(){
            <SubTitle>Bebidas Con Alcohol</SubTitle>
            <CardContainer>
                {
-                    productos? ItemWithoutAlcohol.map((p, i) => {
+                    productos.length? ItemWithoutAlcohol.map((p, i) => {
                         return(
                          <Card key={i} product={p.title} price={p.price} id={p.id} quantity={1} picture_url={p.picture_url}/>
                         
@@ -78,14 +78,7 @@ function Card ({ product, price, quantity, picture_url, id}) {
         dispatch(addItem(drinks))
            
     }
-    //   const ProductNumberDecrement = () => {
-    //     if(drinks.quantity === 0){
-    //         setDrinks(prev => ({...prev, quantity: 0 }))
-    //     } else{
-    //         setDrinks(prev => ({...prev, quantity: drinks.quantity - 1 }))
-           
-    //     }
-    //   }
+   
 
       const deleteItem = () => {
         dispatch(DeleteItem(id))
@@ -103,7 +96,7 @@ function Card ({ product, price, quantity, picture_url, id}) {
 
     return(
         <Container>
-        <Img src={`https://hit-pasta.herokuapp.com/${picture_url}`} />
+        <Img src={picture_url? `https://hit-pasta.herokuapp.com/${picture_url}` : <Loading/>} />
 
        <ContainerInfo >
            <Title>{product}</Title>

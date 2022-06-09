@@ -6,6 +6,7 @@ import { BtnFinalizarCompra,Options, ContainerButtons, ContainerInfo2, OptionIte
 import CurrencyFormat from 'react-currency-format';
 import {Buttons} from '../categories/bebidasStyles'
 import {VscTrash} from 'react-icons/vsc'
+import Loading from "../spinner/spinner";
 
 
 export default function ResumenCarrito (){
@@ -42,7 +43,7 @@ export default function ResumenCarrito (){
                cart.length ? cart.map((p, i) => {
               
                  return(
-                  <Card key={i} picture_url={`https://hit-pasta.herokuapp.com/${p.picture_url}`} 
+                  <Card key={i} picture_url={cart.length? `https://hit-pasta.herokuapp.com/${p.picture_url}` : <Loading/>} 
                   product={p.title}
                   id={p.id}
                   unit_price={p.unit_price}
