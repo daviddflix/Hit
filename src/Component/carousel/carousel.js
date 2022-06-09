@@ -26,8 +26,7 @@ export default class Carouselp extends Component {
       <Slide index={1}> <Img  src={img2}/> </Slide>
       <Slide index={1}> <Img  src={img3}/> </Slide>
     </Slider>
-    {/* <ArrowLeft><IoIosArrowBack/></ArrowLeft>
-    <ArrowRight><IoIosArrowForward/></ArrowRight> */}
+   
   </CarouselProvider> 
         );
     }

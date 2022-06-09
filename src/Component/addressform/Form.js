@@ -43,7 +43,7 @@ const handleZona = (e) => {
  }, 0)
 
 
- console.log('cart', cart)
+
 
 
  const items = cart && cart.map((p, i) => {
@@ -51,16 +51,16 @@ const handleZona = (e) => {
     let salsas =  p.salsa ? p.salsa.join(', ') : ''
     let toppings =  p.toppings ? p.toppings.join(', ') : ''
    
-   console.log('salsas', salsas)
+ 
     return(
       `${p.title}%20x%20${p.quantity}%0A${p.salsa ? `${salsas}%0A${toppings}%0A`: ''}%0A${p.Comments? p.Comments: ''}`
      
     )
 })
 
-console.log('items', items.join(''))
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0A${items.join(' ')}%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago:%20${input.method}%0ATotal:%20$${total}%0A%0ATU%20PEDIDO%20ESTA%CASI%LISTO%SOLO%20FALTA%20PRESIONAR%20ENVIAR%20EN%20TU%20WHATSAPP`
+
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A${items.join(' ')}%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago:%20${input.method}%0ATotal:%20$${total}%0A%0ATU%20PEDIDO%20ESTA%20CASI%20LISTO%20SOLO%20FALTA%20PRESIONAR%20ENVIAR%20EN%20TU%20WHATSAPP`
 
     return(
         <MainContainer>

@@ -29,12 +29,14 @@ html{
   align-items: center;
   justify-content: center;
   padding: 15px;
-  border-radius: 10px;
-  color: #282828;
+  border-radius: 5px;
+  color: #29d884;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   width: 50%;
   font-size: 20px;
-  background-color: #ff595a;
+  height: 200px;
+  background-color: #f5f6f8;
+ 
 }
 
 .boxMessageMedia{

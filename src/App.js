@@ -8,9 +8,8 @@ import CarouselProduct from './Component/product/product';
 import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/Categories';
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import Context from './Component/context/Items';
-import UserProfile from './Component/profile/userProfile';
 import ResumenCarrito from './Component/resumenCarrito/carrito';
 
 import userContext from './Component/context/userContext';
@@ -21,8 +20,10 @@ import Form from './Component/addressform/Form';
 
 function App() {
 
+ 
+
   const media = window.matchMedia("(max-width:900px)")
-   
+  
 
     const [closeCart, setCloseCart] = useState(false)
     const [input, setInput] = useState({
@@ -69,13 +70,8 @@ function App() {
              <Route exact path='/productos'>
              <Categories/>
              </Route> 
- 
-             <Route exact path='/userProfile'>
-             <UserProfile/>
-             </Route> 
-           
- 
-           
+  
+          
               <Route exact path='/carrito'>
              <ResumenCarrito/>
              </Route> 
