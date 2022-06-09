@@ -27,16 +27,13 @@ import { NavLink } from "react-router-dom";
   
 
     useEffect(() => {
-        let cancel = false
+       
         const data = async () => {
             dispatch(getProduct())
         }
         
         data()
-        return () => {
-            cancel = true
-        }
-      
+         
     }, [dispatch])
 
     return( 
@@ -86,7 +83,7 @@ import { NavLink } from "react-router-dom";
                 </Slider>
                <ArrowLeft><IoIosArrowBack style={{width: '22px', height: '22px'}}/></ArrowLeft>
                <ArrowRight><IoIosArrowForward style={{width: '22px', height: '22px'}}/></ArrowRight>
-            </CarouselProvider> : <></>
+            </CarouselProvider> :  <Loading/>
             }
                 </MainContainer>
 

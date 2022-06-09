@@ -3,7 +3,6 @@ import { IoCartOutline} from 'react-icons/io5'
 import { NavLink } from "react-router-dom";
 import { AiOutlineMenu} from 'react-icons/ai'
 import {HashLink} from 'react-router-hash-link'
-import img from '../carousel/image/tiposDePasta.jpg'
 
 
 

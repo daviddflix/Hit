@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import img from '../carousel/image/spaguetti 1500x.jpg';
 import {BiTrashAlt} from 'react-icons/bi'
 import {RiArrowLeftSLine} from 'react-icons/ri'
 

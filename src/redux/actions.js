@@ -74,18 +74,6 @@ export function postCompra (payload){
      
   } 
 
-  export function getAllCompras (){
-    return async function (dispatch){
-           try {                          
-                const res = await axios.get(`${url}/getallcompras`);
-                
-            } catch (err) {
-                return console.error('algo paso',err);
-            }
-                
-        } 
-  } 
-
  
 
  export function getUser  (){

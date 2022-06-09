@@ -8,10 +8,9 @@ import CarouselProduct from './Component/product/product';
 import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/Categories';
-import {  useEffect, useState } from 'react';
+import {  useState } from 'react';
 import Context from './Component/context/Items';
 import ResumenCarrito from './Component/resumenCarrito/carrito';
-
 import userContext from './Component/context/userContext';
 import OrderContext from './Component/context/orderContext';
 import MessageMedia from './Component/MessajeMedia';

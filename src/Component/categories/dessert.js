@@ -1,15 +1,24 @@
 
 import {  useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, DeleteItem } from "../../redux/actions";
+import { addItem, DeleteItem, getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { MainContainer, BoxOptions, BoxOptionsChild, Img, Buttons, P } from "./dessertStyles"
+import { MainContainer, BoxOptions, Img, Buttons } from "./dessertStyles"
 import {VscTrash} from 'react-icons/vsc'
 import { Container, ContainerButtons, ContainerInfo, Title } from "./bebidasStyles";
 
 export default function Dessert () {
 
   const products = useSelector(state => state.food)
+
+  const dispatch = useDispatch()
+   
+
+ 
+    useEffect(() => {
+      dispatch(getProduct())
+    }, [dispatch])
+
  
     return(
         <MainContainer>
@@ -57,20 +66,7 @@ function Card({img, product, price, quantity, picture_url, id}){
       setDessert(prev => ({...prev, quantity: dessert.quantity + 1 }))
       dispatch(addItem(dessert))
   }
-    // const ProductNumberDecrement = () => {
-    //   if(dessert.quantity === 0){
-    //     setDessert(prev => ({...prev, quantity: 0 }))
-    //   } else{
-    //     setDessert(prev => ({...prev, quantity: dessert.quantity - 1 }))
-    //   }
-    // }
-
-  //   const AddItemsToCart = () => {
-  //     if(dessert.quantity){
-  //      dispatch(addItem(dessert))
-  //     }
-  //   setDessert(prev => ({...prev,quantity: 0}))
-  //  }
+   
 
   const quantityInCart = cart && cart.find(p => p.id === id)
   const realQuantity  = quantityInCart? quantityInCart.quantity : 0

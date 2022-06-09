@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
-import { getAllCompras, DeleteItem, addItemReview } from "../../redux/actions";
+import {  DeleteItem, addItemReview } from "../../redux/actions";
 import { BtnFinalizarCompra,Options, ContainerButtons, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal } from "./styles"
-import { useAuth0} from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
 import {Buttons} from '../categories/bebidasStyles'
 import {VscTrash} from 'react-icons/vsc'
@@ -11,19 +10,15 @@ import {VscTrash} from 'react-icons/vsc'
 
 export default function ResumenCarrito (){
 
-  const {isAuthenticated , loginWithRedirect } = useAuth0();
+ 
   
-  const cart = useSelector(state => state.cart)
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const cart = useSelector(state => state.cart);
+  const history = useHistory();
 
   const ProcederAlPago = async () => {
     history.push('/formPago') 
   }
 
-  useEffect(() => {
-    dispatch(getAllCompras())
-  }, [ dispatch])
 
   const priceProduct = cart.map(p => p.unit_price * p.quantity)
   const total =   priceProduct.reduce((prev, curr) => {

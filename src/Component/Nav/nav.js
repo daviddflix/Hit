@@ -1,8 +1,6 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef, useCallback } from "react";
 import { ContainerRutas, Link, LinkLogo, MainContainer, MenuBar, MobileIcon, Wrapper, ContainerIconCart } from "./styles";
 import Context from "../context/Items";
-import { useAuth0 } from "@auth0/auth0-react";
-
 import {  useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {AiOutlineClose} from 'react-icons/ai';
@@ -35,23 +33,15 @@ export default function Nav(){
      
      const cartItems = useSelector(state => state.cart)
      const {closeCart, setCloseCart} = useContext(Context)
-     const [anchorEl, setAnchorEl] = useState(null);
+    
      const history = useHistory()
 
      
      let closeNav = useRef()
   
  
-     const handleClickOutside = (event) => {
+     const handleClickOutside = useCallback((event) => {
           if (closeNav.current && show === true && !closeNav.current.contains(event.target)) {
-              setShow(!show);
-              const body = document.body.style
-              body.overflow='visible'
-              body.zIndex=10
-              body.pointerEvents='auto'
-           
-          }
-          if (closeNav.current && show === true && closeNav.current.contains(event.target)) {
                setShow(!show);
                const body = document.body.style
                body.overflow='visible'
@@ -59,13 +49,21 @@ export default function Nav(){
                body.pointerEvents='auto'
             
            }
-      };
+           if (closeNav.current && show === true && closeNav.current.contains(event.target)) {
+                setShow(!show);
+                const body = document.body.style
+                body.overflow='visible'
+                body.zIndex=10
+                body.pointerEvents='auto'
+             
+            }
+     }, [show]) 
 
 
       useEffect(() => {
-         let cancel = false
+        
            if(show){   
-                cancel = true;
+              
                const body = document.body.style
                body.overflow='hidden'
                body.zIndex=10
@@ -73,16 +71,14 @@ export default function Nav(){
                document.getElementsByClassName('nav')[0].style.pointerEvents='auto'  
                document.getElementsByClassName('nav')[0].style.overflow='visible'
            }
-           if(!show){
-                cancel=false
-           }
+         
           
       }, [show])
   
       useEffect(() => {
           document.addEventListener('mousedown', handleClickOutside, true);
          
-      }, [show]);
+      }, [show, handleClickOutside]);
     
   
  
@@ -112,7 +108,7 @@ export default function Nav(){
 
    useEffect(() => {
      document.addEventListener('scroll', changeBackgroundColor)
-   },[document])
+   },[])
 
 
 

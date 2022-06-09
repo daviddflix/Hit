@@ -7,15 +7,17 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { resetCart } from "../../redux/actions";
 
 
 
 export default function Form(){
 
-    const history = useHistory()
-    const {input, setInput} = useContext(userContext)
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const {input, setInput} = useContext(userContext);
     let cart = useSelector(state => state.cart);
 
 
@@ -161,7 +163,7 @@ const handleZona = (e) => {
        
       </Grid>
   <A href={link}>
-      <Button disabled={!input.nombre || !input.numero || !input.direccion || !input.zona || !input.method || !cart.length }>FINALIZAR PEDIDO</Button></A>
+      <Button onClick={() => dispatch(resetCart())} disabled={!input.nombre || !input.numero || !input.direccion || !input.zona || !input.method || !cart.length }>FINALIZAR PEDIDO</Button></A>
      
         </MainContainer>
     )

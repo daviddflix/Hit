@@ -7,6 +7,7 @@ import {store, persistor} from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import ScrollToTop from './Component/carousel/ScrollToTop';
 import { Auth0Provider } from "@auth0/auth0-react";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN
 const client = process.env.REACT_APP_AUTH0_CLIENT_ID
@@ -29,5 +30,7 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+serviceWorkerRegistration.register();
 
 
