@@ -53,7 +53,7 @@ const handleZona = (e) => {
    
    console.log('salsas', salsas)
     return(
-      `${p.title}%0A${p.salsa ? `${salsas}%0A${toppings}%0A`: ''}${p.quantity}%0A${p.Comments? p.Comments: ''}`
+      `${p.title}%20x%20${p.quantity}%0A${p.salsa ? `${salsas}%0A${toppings}%0A`: ''}%0A${p.Comments? p.Comments: ''}`
      
     )
 })
