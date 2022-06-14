@@ -54,7 +54,7 @@ const handleZona = (e) => {
    
  
     return(
-      `${p.title}%20x%20${p.quantity}%0A${p.salsa ? `SALSAS:%0A${salsas}%0AEXTRA:%0A${toppings}%0ACOMENTARIO:%0A${p.Comments}`: ''}`
+      `${p.title}%20x%20${p.quantity}%0A${p.salsa ? `SALSAS:%0A${salsas}%0A${toppings? `EXTRA:%0A${toppings}`: ''}%0A${p.Comments? `COMENTARIO:%0A${p.Comments}`: ''}`: ''}%0A`
      
     )
 })
