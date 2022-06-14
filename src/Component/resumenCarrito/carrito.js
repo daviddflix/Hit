@@ -75,8 +75,8 @@ console.log('cart', cart)
 
            </ContainerProduct>
 
-           <ContainerTotal>
            {close === true? <Message>Lo sentimos, estamos cerrados</Message> : <></>} 
+           <ContainerTotal>
               <h4>TOTAL</h4>
               <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
            </ContainerTotal>

@@ -81,7 +81,7 @@ export const ContainerButtons = styled.div`
 `;
 
 export const BtnFinalizarCompra = styled.button`
-@media screen and (max-width: 900px){
+
 
        
         background-color: #29d884;
@@ -93,7 +93,10 @@ export const BtnFinalizarCompra = styled.button`
         padding: 10px;
         margin-bottom: 5rem;
         border-radius: 10px;
-}
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
 `;
 
 export const ButtonVerCarrito = styled.button`
@@ -165,9 +168,7 @@ font-size: 12px;
 `;
 
 export const Message = styled.h4`
-position: absolute;
-right: 6rem;
-bottom: 2.5rem;
+
 border-radius: 10px;
 padding: 5px;
 font-size: 15px;
