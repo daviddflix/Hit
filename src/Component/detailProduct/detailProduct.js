@@ -1,12 +1,14 @@
-import {  useContext, useEffect } from "react"
+import {  useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import {  addItemDetail, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, MainBoxBtns, ContainerOption, BtnArmarOtroHit, Description, BoxTitleAndPhoto2Child, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon, Drop } from "./styles"
+import { BoxComentario, BoxTitleAndPhoto, MainBoxBtns, ContainerOption, Popup, BtnArmarOtroHit, Description, BoxTitleAndPhoto2Child, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon, Drop } from "./styles"
 import Loading from "../spinner/spinner"
 import { motion } from "framer-motion/dist/framer-motion"
 import OrderContext from "../context/orderContext"
 import {v4 as uuidv4} from 'uuid'
+
+
 
 
 
@@ -70,30 +72,11 @@ export default function DetailProduct(){
         setOptions(prev => ({
           ...prev, Comments:  e.target.value}))
       }
+
+     
+     
+
       
-      const handleSalsa = (e) => {
-      
-         const {name, checked} = e.target
-           
-        if (checked === true){
-        options.salsa.length <=1 && setOptions(prev => ({
-            ...prev, salsa: [...prev.salsa, name], picture_url: detail.picture_url, 
-            id: uuidv4(), price: detail.price, title: detail.title
-          }))
-        }
-
-        if(options.salsa.length >= 2){
-          e.target.checked = false
-        }
-        
-
-         if(checked === false){
-           setOptions(prev => ({
-             ...prev, salsa: prev.salsa.filter(p => p !== name)
-           }))
-         }
-      }    
-
       const handleToppings = async (e) => {
 
         const{name, checked} = e.target
@@ -151,19 +134,20 @@ export default function DetailProduct(){
               </div>
                <ProductName>{detail.title}</ProductName>
              </BoxTitleAndPhoto>
+            
+
              
                 {
                      detail && detail?.salsas?.map((p, index) => {
                         return(
-                            <ContainerOptionChild key={index}>
-                             <div  style={{display: 'flex', width: '100%', justifyContent: 'flex-start'}}>
-                                 <Drop />
-                                 <LabelProductName htmlFor={p.sauce}>{p.sauce}</LabelProductName>
-                            
-                                <Description>{p.description}</Description>
-                             </div>
-                                <InputOptions type='checkbox' id={p.sauce}  checked={options.salsa.index} key={index} name={p.sauce}  value={p.sauce} onChange={handleSalsa}/>
-                            </ContainerOptionChild>
+                           <Card
+                           key={index}
+                           description={p.description}
+                           sauce={p.sauce}
+                           picture_url={detail.picture_url}
+                           price={detail.price}
+                           title={detail.title}
+                           />
                         )
                     })
                 }
@@ -217,4 +201,63 @@ export default function DetailProduct(){
 
         </MainContainer>
     )
+
+
+
+}
+
+
+function Card ({sauce, description, picture_url, title, price}){
+
+  const {options, setOptions} = useContext(OrderContext);
+
+  const [message, setMessage] = useState(false)
+  
+
+      useEffect(() => {
+        setTimeout(() => {
+          setMessage(false)
+        }, 2000);
+      }, [message])
+
+    
+
+  const handleSalsa = (e) => {
+      
+    const {name, checked} = e.target
+      
+   if (checked === true){
+   options.salsa.length <=1 ? setOptions(prev => ({
+       ...prev, salsa: [...prev.salsa, name], picture_url: picture_url, 
+       id: uuidv4(), price: price, title: title
+     })) : setMessage(true)
+   }
+   
+   if(options.salsa.length >= 2){
+     e.target.checked = false
+    
+   }
+
+   
+   
+
+    if(checked === false){
+      setMessage(false)
+      setOptions(prev => ({
+        ...prev, salsa: prev.salsa.filter(p => p !== name)
+      }))
+    }
+ }    
+
+  return(
+    <ContainerOptionChild >
+    <div  style={{display: 'flex', width: '100%', justifyContent: 'flex-start' }}>
+        <Drop />
+        <LabelProductName htmlFor={sauce}>{sauce}</LabelProductName>
+        {message === true? <Popup>Maximo alcanzado</Popup> :<></>}
+       <Description>{description}</Description>
+    </div>
+       <InputOptions type='checkbox' id={sauce}  checked={options.salsa.index}  name={sauce}  value={sauce} onChange={handleSalsa}/>
+   </ContainerOptionChild>
+  )
 }

@@ -73,7 +73,7 @@ export const ContainerOptionChild = styled.div`
         position: relative;
         border-top: none;
         background-color: #fff;
-        border-bottom: 1px solid rgba(0,0,0,0.2);
+        border-bottom: 1px solid rgba(0,0,0,0.1);
         position: relative;
         left: 1rem;
         
@@ -234,6 +234,16 @@ export const PhotoProduct = styled.img`
        
         
  
+`;
+
+export const Popup = styled.label`
+position: absolute;
+right: 5rem;
+top: 10px;
+color: red;
+outline: 1px solid red;
+padding: 5px;
+border-radius: 5px;
 `;
 
 
