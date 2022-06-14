@@ -2,23 +2,41 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import {  DeleteItem, addItemReview } from "../../redux/actions";
-import { BtnFinalizarCompra,Options, ContainerButtons, Commentarios,  DivSalsas,  Toppings, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal, H4 } from "./styles"
+import { BtnFinalizarCompra,Options, ContainerButtons, Commentarios, Message,  DivSalsas,  Toppings, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal, H4 } from "./styles"
 import CurrencyFormat from 'react-currency-format';
 import {Buttons} from '../categories/bebidasStyles'
 import {VscTrash} from 'react-icons/vsc'
 import Loading from "../spinner/spinner";
+import { useEffect, useState } from "react";
+
 
 
 export default function ResumenCarrito (){
 
- 
+  const time = new Date().getHours()
+  const closeStore = time > 12 && time < 23 ? false : true
+  const [close, setClose] = useState(false)
+
   
   const cart = useSelector(state => state.cart);
   const history = useHistory();
 
   const ProcederAlPago = async () => {
-    history.push('/formPago') 
+    if(close === false){
+      setClose(true)
+    }
+     if(closeStore === false){
+      history.push('/formPago') 
+    }
   }
+
+  useEffect(() => {
+    if(close === true){
+      setTimeout(() => {
+        setClose(false)
+      }, 2000);
+    }
+  }, [close])
 
 
   const priceProduct = cart.map(p => p.unit_price * p.quantity)
@@ -58,12 +76,14 @@ console.log('cart', cart)
            </ContainerProduct>
 
            <ContainerTotal>
+           {close === true? <Message>Lo sentimos, estamos cerrados</Message> : <></>} 
               <h4>TOTAL</h4>
               <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
            </ContainerTotal>
 
-           <div style={{display:'flex', width: '100%'}}>
-           <BtnFinalizarCompra 
+           <div style={{display:'flex', width: '100%', position: 'relative'}}>
+           
+           <BtnFinalizarCompra
               onClick={ProcederAlPago} 
               disabled={!cart.length}>FINALIZAR COMPRA</BtnFinalizarCompra>
                <ButtonVerCarrito onClick={backToProducts}>ARMAR OTRO HIT</ButtonVerCarrito>

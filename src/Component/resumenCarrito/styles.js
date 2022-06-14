@@ -136,6 +136,7 @@ export const ContainerTotal = styled.div`
   align-items: flex-start;
   width: 100%;
   margin-bottom: 1rem;
+  position: relative;
   
 }
 `;
@@ -161,6 +162,17 @@ export const OptionItems = styled.h4`
 font-size: 12px;  
 
 }
+`;
+
+export const Message = styled.h4`
+position: absolute;
+right: 6rem;
+bottom: 2.5rem;
+border-radius: 10px;
+padding: 5px;
+font-size: 15px;
+color: red;
+border: 1px solid red;
 `;
 
 export const Commentarios = styled.h4`
