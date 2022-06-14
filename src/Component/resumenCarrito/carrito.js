@@ -66,7 +66,7 @@ console.log('cart', cart)
                   id={p.id}
                   unit_price={p.unit_price}
                   salsas={p.salsa && p.salsa.map((p, i) => <OptionItems key={i}>{ (i ? ' - ' : '') + p }</OptionItems>)}
-                  toppings={p.toppings && p.toppings.map((p, i) => <OptionItems key={i}>{ (i ? ' - ' : '') + p }</OptionItems>)}
+                  toppings={p.toppings !== undefined && p.toppings.length > 0 ? p.toppings.map((p, i) => <OptionItems key={i}>{ (i ? ' - ' : '') + p }</OptionItems>) : ''}
                   Comments={p.Comments}
                   />
                  )
@@ -136,10 +136,10 @@ function Card({product, salsas, unit_price, toppings, picture_url, id, Comments}
     </Options>
     }
     
-    {toppings && <Options>
+    {toppings ? <Options>
       <H4>EXTRA</H4>
    <Toppings>{toppings}</Toppings>
-    </Options>
+    </Options> : ''
     }
 
     {
