@@ -163,6 +163,11 @@ font-size: 12px;
 }
 `;
 
+export const Commentarios = styled.h4`
+font-size: 12px;
+margin: 5px 0 0 1rem ;
+`;
+
 export const Toppings = styled.div`
 position: relative;
 left: 1rem;

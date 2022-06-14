@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import {  DeleteItem, addItemReview } from "../../redux/actions";
-import { BtnFinalizarCompra,Options, ContainerButtons, DivSalsas,  Toppings, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal, H4 } from "./styles"
+import { BtnFinalizarCompra,Options, ContainerButtons, Commentarios,  DivSalsas,  Toppings, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal, H4 } from "./styles"
 import CurrencyFormat from 'react-currency-format';
 import {Buttons} from '../categories/bebidasStyles'
 import {VscTrash} from 'react-icons/vsc'
@@ -31,7 +31,7 @@ export default function ResumenCarrito (){
  }
 
 
-
+console.log('cart', cart)
    
     return(
         <MainContainer>
@@ -49,6 +49,7 @@ export default function ResumenCarrito (){
                   unit_price={p.unit_price}
                   salsas={p.salsa && p.salsa.map((p, i) => <OptionItems key={i}>{ (i ? ' - ' : '') + p }</OptionItems>)}
                   toppings={p.toppings && p.toppings.map((p, i) => <OptionItems key={i}>{ (i ? ' - ' : '') + p }</OptionItems>)}
+                  Comments={p.Comments}
                   />
                  )
                }) : <h3>No hay productos en tu carrito</h3>
@@ -75,7 +76,7 @@ export default function ResumenCarrito (){
 
 
 
-function Card({product, salsas, unit_price, toppings, picture_url, id}){
+function Card({product, salsas, unit_price, toppings, picture_url, id, Comments}){
 
   const dispatch = useDispatch()
   
@@ -119,6 +120,13 @@ function Card({product, salsas, unit_price, toppings, picture_url, id}){
       <H4>EXTRA</H4>
    <Toppings>{toppings}</Toppings>
     </Options>
+    }
+
+    {
+     Comments && <Options>
+        <H4>COMENTARIO</H4>
+       <Commentarios>{Comments}</Commentarios>
+     </Options> 
     }
     
 
