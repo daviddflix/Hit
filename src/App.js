@@ -4,8 +4,8 @@ import Nav from './Component/Nav/nav';
 import Chat from './Component/chat/whatsapp';
 import Info from './Component/Info/info';
 import Footer from './Component/footer/footer';
-import CarouselProduct from './Component/product/product';
-import Carouselp from './Component/carousel/carousel';
+// import CarouselProduct from './Component/product/product';
+// import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/Categories';
 import {  useState } from 'react';
@@ -28,7 +28,7 @@ function App() {
     const [input, setInput] = useState({
       nombre: "",
       direccion: "",
-      numero: "",
+      numero: "11",
       method: "",
       zona: ""
   })
@@ -59,15 +59,13 @@ function App() {
  
        
  
-             <Route  exact path='/'>
-             <Carouselp/>
-             <CarouselProduct/>
-             <Info/>  
-             
+             <Route  exact path='/envio'>
+             <Info/>
              </Route> 
  
-             <Route exact path='/productos'>
+             <Route exact path='/'>
              <Categories/>
+             
              </Route> 
   
           

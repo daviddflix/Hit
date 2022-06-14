@@ -96,7 +96,7 @@ function Card ({ product, price, quantity, picture_url, id}) {
 
     return(
         <Container>
-        <Img src={picture_url? `https://hit-pasta.herokuapp.com/${picture_url}` : <Loading/>} />
+        <Img src={productos.length? `https://hit-pasta.herokuapp.com/${picture_url}` : <Loading/>} />
 
        <ContainerInfo >
            <Title>{product}</Title>

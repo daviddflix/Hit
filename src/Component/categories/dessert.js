@@ -26,11 +26,11 @@ export default function Dessert () {
          <h3>ELIGE TUS POSTRES</h3>
          <BoxOptions>
          {
-            products? products[0].dessert.dessert.map((p, i) => {
+            products.length? products[0].dessert.dessert.map((p, i) => {
             
                return(
                 <Card key={i} 
-                img={`https://hit-pasta.herokuapp.com/${p.picture_url}`}
+                img={products.length? `https://hit-pasta.herokuapp.com/${p.picture_url}` : <Loading/>}
                 product={p.title}
                 price={products[0].dessert.dessertPrice}
                 quantity={1}

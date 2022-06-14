@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 
 
 
+
 export default function Form(){
 
     const history = useHistory();
@@ -53,14 +54,14 @@ const handleZona = (e) => {
    
  
     return(
-      `${p.title}%20x%20${p.quantity}%0A${p.salsa ? `${salsas}%0A${toppings}%0A`: ''}%0A${p.Comments? p.Comments: ''}`
+      `${p.title}%20x%20${p.quantity}%0A${p.salsa ? `${salsas}%0A${toppings}%0A${p.Comments}`: ''}}`
      
     )
 })
 
 
 
- const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0A${items.join('')}%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago:%20${input.method}%0ATotal:%20$${total}%0A%0ATU%20PEDIDO%20ESTA%20CASI%20LISTO%20SOLO%20FALTA%20PRESIONAR%20ENVIAR%20EN%20TU%20WHATSAPP`
+ const link =`https://wa.me/5491137858227?text=HIT%20PASTA%0A%0AGracias%20por%20tu%20compra%20${input.nombre}!%0A%0AVerifica%20tu%20pedido%0A${items.join('')}%0ANombre:%20${input.nombre}%0ADireccion:%20${input.direccion}%0ATelefono:%20${input.numero}%0AZona:%20${input.zona}%0AMetodo%20de%20Pago:%20${input.method}%0ATotal:%20$${total}%0A%0ATU%20PEDIDO%20ESTA%20CASI%20LISTO%20SOLO%20FALTA%20PRESIONAR%20ENVIAR%20EN%20TU%20WHATSAPP`
 
     return(
         <MainContainer>
@@ -82,9 +83,12 @@ const handleZona = (e) => {
             color='success'
             focused
             type='number'
+            placeholder="11********"
             
           />
+         
         </Grid>
+       
         <Grid item xs={12}>
           <TextField
             required
@@ -114,10 +118,12 @@ const handleZona = (e) => {
           
         >
          
-          <MenuItem  value='Belgrano'>Belgrano</MenuItem>
-          <MenuItem value='San Isidro'>San Isidro</MenuItem>
+          <MenuItem  value='San Isidro'>San Isidro</MenuItem>
+          <MenuItem value='San Isidro centro'>San Isidro centro</MenuItem>
           <MenuItem value='Martinez'>Martinez</MenuItem>
+          <MenuItem value='Acasusso'>Acasusso</MenuItem>
           <MenuItem value='Las Cañitas'>Las Cañitas</MenuItem>
+          <MenuItem value='Belgrano'>Belgrano</MenuItem>
         
         </Select>
       </FormControl>

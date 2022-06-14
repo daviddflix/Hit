@@ -5,15 +5,13 @@ import {FaMoneyBillWave} from 'react-icons/fa'
 
 export const  MainContainer = styled.div`
 
-     display: flex;
-     background-color: #f5f6f8;
-    @media screen and (max-width: 900px ) {
+
     display: flex;
     flex-direction: column;
     background-color: #f5f6f8;
     padding: 1rem;
     
-   }
+   
 `; 
 
 export const  Container = styled.div`
@@ -23,11 +21,12 @@ export const  Container = styled.div`
     align-items: center;
     justify-content: center;
   @media screen and (max-width: 900px ) {
-    margin: 3rem;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 4rem;
    }
  
 `;

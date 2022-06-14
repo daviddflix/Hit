@@ -109,14 +109,14 @@ export const ButtonVerCarrito = styled.button`
  }
 `;
 
-export const Title = styled.h4`
-@media screen and (max-width: 900px){
+export const Title = styled.h2`
+
 color: black;
 margin :0;
 font-size: 11px;
 display:block;
 
-}
+
 `;
 
 export const ContainerTotal = styled.div`

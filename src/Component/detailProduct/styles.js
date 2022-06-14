@@ -73,7 +73,7 @@ export const ContainerOptionChild = styled.div`
         position: relative;
         border-top: none;
         background-color: #fff;
-        border-bottom: 1px solid #f5f6f8;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
         position: relative;
         left: 1rem;
         

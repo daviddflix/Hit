@@ -130,20 +130,20 @@ export default function Nav(){
 
           <ContainerRutas>
                <Link  to='/' exact onClick={onClose} >
-               HOME
+               PRODUCTOS
                </Link>
           </ContainerRutas>
     
           <ContainerRutas>
-               <Link to='/productos' exact onClick={onClose}>
-               PRODUCTOS
+               <Link to='/envio' exact onClick={onClose}>
+               PICK UP
                </Link>
           </ContainerRutas>
      
         
 
           <ContainerRutas>
-               <Link to='/trabajaConNosotros' exact onClick={onClose}>
+               <Link to='/workwithus' exact onClick={onClose}>
                TRABAJA CON NOSOTROS
                </Link>
           </ContainerRutas>

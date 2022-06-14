@@ -27,7 +27,7 @@ export default function ResumenCarrito (){
   }, 0)
 
   const backToProducts = () => {
-    history.push('/productos')
+    history.push('/')
  }
 
 

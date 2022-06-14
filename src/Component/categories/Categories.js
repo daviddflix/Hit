@@ -20,7 +20,7 @@ export default function Categories () {
 
     const [product, setProduct] = useState('pastas')
     
-     const color = product === 'pastas'? '#ffd803' : product === 'postres'? '#d9376e' : '#ff595a' 
+     const color = product === 'pastas'? '#5ac6d3' : product === 'postres'? '#d9376e' : '#ff595a' 
 
      const handleProducts = (e) => {
         

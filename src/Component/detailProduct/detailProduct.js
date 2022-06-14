@@ -41,7 +41,7 @@ export default function DetailProduct(){
   quantity: 1,
           })
          } 
-           history.push('/productos')
+           history.push('/')
          
       }
 
@@ -156,13 +156,13 @@ export default function DetailProduct(){
                      detail && detail?.salsas?.map((p, index) => {
                         return(
                             <ContainerOptionChild key={index}>
-                             <div style={{display: 'flex', width: '100%', justifyContent: 'flex-start'}}>
+                             <div  style={{display: 'flex', width: '100%', justifyContent: 'flex-start'}}>
                                  <Drop />
-                                 <LabelProductName >{p.sauce}</LabelProductName>
+                                 <LabelProductName htmlFor={p.sauce}>{p.sauce}</LabelProductName>
                             
-                             </div>
-                                <InputOptions type='checkbox'  checked={options.salsa.index} key={index} name={p.sauce}  value={p.sauce} onChange={handleSalsa}/>
                                 <Description>{p.description}</Description>
+                             </div>
+                                <InputOptions type='checkbox' id={p.sauce}  checked={options.salsa.index} key={index} name={p.sauce}  value={p.sauce} onChange={handleSalsa}/>
                             </ContainerOptionChild>
                         )
                     })
@@ -183,9 +183,9 @@ export default function DetailProduct(){
                      detail && detail?.toppings?.option?.map(p => {
                         return(
                             <ContainerOptionChild  key={p}>
-                                 <LabelProductName>{p}</LabelProductName>
+                                 <LabelProductName htmlFor={p}>{p}</LabelProductName>
                                   <label style={{marginLeft: '2rem'}}>${detail.toppings.price}</label>
-                                 <InputOptions type='checkbox' name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>
+                                 <InputOptions type='checkbox' id={p} name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>
                             </ContainerOptionChild>
                         )
                     })

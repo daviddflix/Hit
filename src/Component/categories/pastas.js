@@ -34,7 +34,7 @@ export default function Pastas(){
                    <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none', }}>
                  
                   <Container >
-                  <Img src={ `https://hit-pasta.herokuapp.com/${p.picture_url}` } />
+                  <Img src={productos.length? `https://hit-pasta.herokuapp.com/${p.picture_url}` : <Loading/>} />
                   
                         <ContainerInfo >
                           <Title>{p.title}</Title>
