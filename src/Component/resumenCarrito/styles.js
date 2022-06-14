@@ -63,6 +63,7 @@ export const ContainerInfo2 = styled.div`
   width: 100%;
   align-items:flex-start;
   flex-direction: column;
+  justify-content: flex-start;
   margin: 0;
 `;
 
@@ -112,12 +113,21 @@ export const ButtonVerCarrito = styled.button`
 export const Title = styled.h2`
 
 color: black;
-margin :0;
-font-size: 11px;
+margin: 0 0 .6rem 0;
+font-size: 17px;
 display:block;
 
 
 `;
+
+export const H4 = styled.h3`
+
+margin: 5px 0 0 0;
+font-size: 14px;
+
+
+`;
+
 
 export const ContainerTotal = styled.div`
 @media screen and (max-width: 900px){
@@ -133,11 +143,12 @@ export const ContainerTotal = styled.div`
 export const Options = styled.div`
 @media screen and (max-width: 900px){
   display: flex;
-  align-items: center;
-  margin: 5px;
+  align-items:center;
+  margin: 0;
   font-size: 12px;
   width: 100%;
-  flex-wrap: wrap;
+  
+  
   
 }
 `;
@@ -146,20 +157,32 @@ export const OptionItems = styled.h4`
 @media screen and (max-width: 900px){
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin: 0;
-  margin-right: 5px;
-  font-size: 12px;  
- 
+  margin: 5px 0 0 3px;
+font-size: 12px;  
+
 }
+`;
+
+export const Toppings = styled.div`
+position: relative;
+left: 1rem;
+display: flex;
+flex-wrap: wrap;
+`;
+
+export const DivSalsas = styled.div`
+position: relative;
+left: .6rem;
+display: flex;
+flex-wrap: wrap;
 `;
 
 
 
 export const Unitprice = styled.h4`
 @media screen and (max-width: 900px){
- margin-bottom: 5px;
- margin-top: 0;
+ margin: 5px 0 0 0 ;
+ font-size: 14px;
 }
 `;
 

@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import {  DeleteItem, addItemReview } from "../../redux/actions";
-import { BtnFinalizarCompra,Options, ContainerButtons, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal } from "./styles"
+import { BtnFinalizarCompra,Options, ContainerButtons, DivSalsas,  Toppings, ContainerInfo2, OptionItems, ContainerProduct, Title, Img, Unitprice,  MainContainer, SubContainer, ButtonVerCarrito, ArrowLeft, ContainerInfo, ContainerTotal, H4 } from "./styles"
 import CurrencyFormat from 'react-currency-format';
 import {Buttons} from '../categories/bebidasStyles'
 import {VscTrash} from 'react-icons/vsc'
@@ -47,8 +47,8 @@ export default function ResumenCarrito (){
                   product={p.title}
                   id={p.id}
                   unit_price={p.unit_price}
-                  salsas={p.salsa && p.salsa.map((p, i) => <OptionItems key={i}>{p}</OptionItems>)}
-                  toppings={p.toppings && p.toppings.map((p, i) => <OptionItems key={i}>{p}</OptionItems>)}
+                  salsas={p.salsa && p.salsa.map((p, i) => <OptionItems key={i}>{ (i ? ' - ' : '') + p }</OptionItems>)}
+                  toppings={p.toppings && p.toppings.map((p, i) => <OptionItems key={i}>{ (i ? ' - ' : '') + p }</OptionItems>)}
                   />
                  )
                }) : <h3>No hay productos en tu carrito</h3>
@@ -108,12 +108,19 @@ function Card({product, salsas, unit_price, toppings, picture_url, id}){
     <ContainerInfo2>
     <Title>{product}</Title>
      
-     <Options>
-     {salsas}
-     </Options>
-     <Options>
-     {toppings}
-     </Options>
+     
+    {salsas && <Options>
+      <H4>SALSAS</H4>
+    <DivSalsas>{salsas}</DivSalsas>
+    </Options>
+    }
+    
+    {toppings && <Options>
+      <H4>EXTRA</H4>
+   <Toppings>{toppings}</Toppings>
+    </Options>
+    }
+    
 
      <Unitprice><CurrencyFormat  fixedDecimalScale={true} value={unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></Unitprice>
     </ContainerInfo2>

@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { IoCartOutline} from 'react-icons/io5'
 import { NavLink } from "react-router-dom";
 import { AiOutlineMenu} from 'react-icons/ai'
-import {HashLink} from 'react-router-hash-link'
 
 
 
@@ -183,31 +182,7 @@ export const Link = styled(NavLink)`
     }
 `;
 
-export const RedirectLink = styled(HashLink)`
-    
-    text-decoration: none;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: black;
-    padding: 10px;
-    font-weight: 600;
-    height: 100%;
-   
 
-    @media screen and (max-width:900px){
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        color: black;
-        padding: 10px;
-        font-weight: 600;
-       
-
-      
-       
-    }
-`;
 
 
 export const MenuCart = styled.ul`
