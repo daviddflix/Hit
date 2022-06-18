@@ -106,7 +106,7 @@ export default function DetailProduct(){
 
       useEffect(() => {  // useEffect to update total amount of the toppings
           const numberOfToppings = options.toppings.length 
-          const totalPriceTopping = numberOfToppings !== 0? numberOfToppings * 119 : 0
+          const totalPriceTopping = numberOfToppings !== 0? numberOfToppings * 122 : 0
          
           setOptions(prev => ({...prev, priceTopping: totalPriceTopping }))
           
