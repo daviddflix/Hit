@@ -122,7 +122,7 @@ export default function DetailProduct(){
            {
             detail.picture_url?  <PhotoProduct  src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
            }
-          <Like onClick={() => {history.push('/productos')}}/>
+          <Like onClick={() => {history.push('/')}}/>
         
            
             <Form>

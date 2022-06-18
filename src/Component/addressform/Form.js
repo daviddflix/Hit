@@ -160,7 +160,7 @@ const handleZona = (e) => {
           
           <MenuItem  value='Efectivo'>Efectivo</MenuItem>
           <MenuItem value='Mercado Pago'>Mercado Pago</MenuItem>
-          <MenuItem value='Retiro en el Local'>Retiro en el local</MenuItem>
+          <MenuItem value='Retiro en el Local'>Retiro en el Local</MenuItem>
         </Select>
       </FormControl>
         </div>
