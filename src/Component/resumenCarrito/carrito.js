@@ -61,7 +61,7 @@ export default function ResumenCarrito (){
                cart.length ? cart.map((p, i) => {
               
                  return(
-                  <Card key={i} picture_url={cart.length? `https://hit-pasta.herokuapp.com/${p.picture_url}` : <Loading/>} 
+                  <Card key={i} picture_url={p.picture_url} 
                   product={p.title}
                   id={p.id}
                   unit_price={p.unit_price}
