@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { Container, ContainerInfo, Heart, Img, ContainerHeart, MainContainer, NavLink, Title } from "./styles";
+import { Container, ContainerHeart, ContainerInfo, Heart, Img,  MainContainer, NavLink, Title } from "./styles";
 import Rating from '@mui/material/Rating';
-
-
-
-
 
 export default function Pastas(){
 
-    const productos = useSelector(state => state.food)
+    const productos = useSelector(state => state.food);
+    
+    const isLoading = useSelector(state => state.isLoading);
    
     const dispatch = useDispatch()
     const [value, setValue] = useState(5);
@@ -27,36 +24,35 @@ export default function Pastas(){
         
           
            <h3>ELIGE TU HIT</h3>
-           <div style={{ minHeight: '100vh'}}>
+           <Container>
            {
-              productos.length? productos.map(p => {
+              isLoading? productos.map(p => {
                  return(
                    <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none', }}>
-                 
-                  <Container >
-                  <Img src={productos.length? `https://hit-pasta.herokuapp.com/${p.picture_url}` : <Loading/>} />
-                  
-                        <ContainerInfo >
-                          <Title>{p.title}</Title>
-                             <Rating
-                              name="size-small"
-                              value={value}
-                              onChange={(event, newValue) => {
-                              setValue(newValue);
-                              }}
-                              />
-                          <h4 style={{margin: '7px', color: '#282828'}}>$ {p.price}</h4>
-                        </ContainerInfo>
-                       <ContainerHeart>
-                       <Heart />
-                       </ContainerHeart>
-                </Container>
+                  <div style={{height: '100%', width: '30%', position: 'relative', overflow: 'hidden', borderRadius: '5px'}}>
+                    {
+                     isLoading?
+                  <Img src={ isLoading? `https://hit-pasta.herokuapp.com/${p.picture_url}`:  <Loading/>} /> : <Loading/>
+                    }
+                  </div>                  
+                  <ContainerInfo >
+                    <Title>{p.title}</Title>
+                        <Rating
+                        name="size-small"
+                        value={value}
+                        onChange={(event, newValue) => {
+                        setValue(newValue);
+                        }}
+                        />
+                    <h4 style={{margin: '7px', color: '#282828'}}>$ {p.price}</h4>
+        
+                  </ContainerInfo>
                   </NavLink>
                  
                  )
                }): <Loading/>
            }
-           </div>
+           </Container>
 
            <div>
      

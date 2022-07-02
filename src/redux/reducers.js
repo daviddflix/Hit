@@ -8,7 +8,8 @@ const InicialState ={
   detail: {},
   userDetails: [],
   cart: [],
-  link: ''
+  link: '',
+  isLoading : false,
 }
 
 
@@ -19,6 +20,7 @@ const InicialState ={
    if(action.type === GET_PRODUCTS){
      return{
        ...state,
+       isLoading: true,
        food: action.payload
      }
    }
@@ -26,6 +28,7 @@ const InicialState ={
 
     return{
       ...state,
+      isLoading: true,
       detail: action.payload
     }
   }

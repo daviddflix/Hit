@@ -49,7 +49,7 @@ export default function ResumenCarrito (){
  }
 
 
-console.log('cart', cart)
+
    
     return(
         <MainContainer>

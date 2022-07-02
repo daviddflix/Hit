@@ -14,7 +14,7 @@ export const ADD_ITEM_TO_CART_DETAILS = 'ADD_ITEM_TO_CART_DETAILS'
 
 
 const url= 'https://hit-pasta.herokuapp.com'   
-// const ur = 'http://localhost:4000'
+
 
 export function getProduct (){   
        return async function (dispatch){

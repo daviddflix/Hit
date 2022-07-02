@@ -12,8 +12,8 @@ export const  MainContainer = styled.div`
     top: 0;
     z-index: 300;
     transition: 0.3s ease-in-out;
-    /* border-bottom: 0.5px solid #060808; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: #fff;
    
 `
 

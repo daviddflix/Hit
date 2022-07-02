@@ -17,75 +17,59 @@ export const MainContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #f3fbfb;
    
-    // background-color: #bcb8b1;
 }
 `;
 
 export const Img = styled.img`
-    height: 150px;
-    width: 150px;
-@media screen and (max-width:900px){
+        transform: scale(3);
+        width: 100%;
         height: 100%;
-        width: 35%;
         border-radius: 5px;
-        position: relative;
-       
-       
-}
 `;
 
 export const Container = styled.div`
    
 @media screen and (max-width:900px){
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    flex-direction: row;
+   
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 110px;
-    width: 87%;
-    position: relative;
-    border-radius: 5px;
-   
-    
-      
-}
-`;
-
-export const ContainerInfo = styled.div`
-   
-@media screen and (max-width:900px){
-   
     flex-direction: column;
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
-    position: relative;
-    right: 4rem;
-    
+    min-height: 100vh;
+    width: 100%;
+    justify-content: center;
     
       
 }
 `;
 
 export const NavLink = styled(Link)`
-    
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-@media screen and (max-width:900px){
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
-    width: 100vw;
-}
+    width: 95%;
+    border-radius: 5px;
+  
 `;
+
+
+export const ContainerInfo = styled.div`
+   
+
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    width: 70%;
+   
+
+`;
+
 
 
 
@@ -103,17 +87,16 @@ export const Heart = styled(BsHeart)`
    
 
 @media screen and (max-width:900px){
-    position: relative;
-    right: 1px;
+ 
   
     color: #ff595a;
 
     :hover{
-       color: #fff;
+       color: red;
     }
 
     :active{
-        color: #fff;
+        color: red;
     }
    
    
@@ -125,27 +108,18 @@ export const ContainerHeart = styled.div`
 
 @media screen and (max-width:900px){
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: 0;
+    right: 0;
     color: #fff;
-    border-radius: 100%;
+    border-radius: 50%;
     padding: 5px;
     border: 2px solid #ff595a;
     background-color: #fff;
     width: 28px;
-    height: 28px;
-
-    :hover{
-        border: none;
-        background-color: #ff595a;
-    }
-
-    :active{
-        border: none;
-        background-color: #ff595a;
-    }
-    
-   
+    height: 28px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 `;
 

@@ -12,6 +12,7 @@ export default function Dessert () {
   const products = useSelector(state => state.food)
 
   const dispatch = useDispatch()
+  const isLoading = useSelector(state => state.isLoading);
    
 
  
@@ -26,7 +27,7 @@ export default function Dessert () {
          <h3>ELIGE TUS POSTRES</h3>
          <BoxOptions>
          {
-            products.length? products[0].dessert.dessert.map((p, i) => {
+            isLoading? products[0].dessert.dessert.map((p, i) => {
             
                return(
                 <Card key={i} 
@@ -51,7 +52,9 @@ function Card({img, product, price, quantity, picture_url, id}){
 
   const dispatch = useDispatch()
   
-  const cart = useSelector(state => state.cart)
+  const cart = useSelector(state => state.cart);
+  const isLoading = useSelector(state => state.isLoading);
+   
 
   const [dessert, setDessert] = useState({
     title: product,
@@ -86,13 +89,15 @@ function Card({img, product, price, quantity, picture_url, id}){
 
   return(
     <Container>
-    <Img src={img}/>
+    {
+     isLoading? <Img src={img}/> : <Loading/>
+    }
    
    <ContainerInfo>
 
    <div>
    <Title>{product}</Title>
-    <h4  style={{margin: '0', color: 'red'}}>${price}</h4>
+    <h4  style={{margin: '0.5rem 0 0 0', color: 'red'}}>${price}</h4>
    </div>
 
    <ContainerButtons>

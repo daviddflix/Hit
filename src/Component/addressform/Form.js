@@ -101,8 +101,6 @@ const handleZona = (e) => {
             variant="outlined"
             onChange={handleInput}
             color='success'
-            
-            
           />
         </Grid>
         <div style={{position: 'relative', left: '1rem', top: '.6rem'}}>
