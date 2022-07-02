@@ -121,7 +121,7 @@ export default function DetailProduct(){
            
            
              <div style={{height: '350px', width: '100%', position: 'relative', overflow: 'hidden', borderRadius: '0 0 10px 10px'}}>
-              <PhotoProduct  src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> 
+              <PhotoProduct  src={detail.picture_url}/> 
             </div> 
             <Like onClick={() => {history.push('/')}}/>
         
@@ -249,7 +249,7 @@ function Card ({sauce, description, picture_url, title, price, image}){
   return(
     <ContainerOptionChild >
        <div style={{height: '50%', width: '10%', position: 'relative', borderRadius: '50%' , overflow: 'hidden', display: 'flex', alignItems: 'center'}}>       
-       <ImageSauce src={`https://hit-pasta.herokuapp.com/${image}`} alt='salsa'/>
+       <ImageSauce src={image} alt='salsa'/>
       </div> 
      
      <div  style={{display: 'flex', width: '70%', flexDirection: 'column', marginLeft: '1rem'}}>

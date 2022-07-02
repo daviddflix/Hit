@@ -31,7 +31,7 @@ export default function Dessert () {
             
                return(
                 <Card key={i} 
-                img={products.length? `https://hit-pasta.herokuapp.com/${p.picture_url}` : <Loading/>}
+                img={p.picture_url}
                 product={p.title}
                 price={products[0].dessert.dessertPrice}
                 quantity={1}
