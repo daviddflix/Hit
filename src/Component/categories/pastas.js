@@ -32,7 +32,7 @@ export default function Pastas(){
                   <div style={{height: '100%', width: '30%', position: 'relative', overflow: 'hidden', borderRadius: '5px'}}>
                     {
                      isLoading?
-                  <Img src={ isLoading? `https://hit-pasta.herokuapp.com/${p.picture_url}`:  <Loading/>} /> : <Loading/>
+                  <Img src={p.picture_url} /> : <Loading/>
                     }
                   </div>                  
                   <ContainerInfo >
