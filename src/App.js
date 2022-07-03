@@ -4,8 +4,6 @@ import Nav from './Component/Nav/nav';
 import Chat from './Component/chat/whatsapp';
 import Info from './Component/Info/info';
 import Footer from './Component/footer/footer';
-// import CarouselProduct from './Component/product/product';
-// import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/Categories';
 import {  useState } from 'react';
@@ -16,12 +14,14 @@ import OrderContext from './Component/context/orderContext';
 import MessageMedia from './Component/MessajeMedia';
 import NoMatch from './Component/404/404';
 import Form from './Component/addressform/Form';
-import { Suspense, lazy } from 'react';
-// const ResumenCarrito = lazy(() => import('./Component/resumenCarrito/carrito'));
+import Loading from './Component/spinner/spinner';
+import CacheBuster from 'react-cache-buster';
+import { version } from '../package.json';
+
 
 function App() {
 
-
+  const isProduction = process.env.NODE_ENV === 'production';
   const media = window.matchMedia("(max-width:900px)")
   
 
@@ -49,6 +49,12 @@ function App() {
 
 
   return (
+    <CacheBuster
+      currentVersion={version}
+      isEnabled={isProduction} //If false, the library is disabled.
+      isVerboseMode={false} //If true, the library writes verbose logs to console.
+      loadingComponent={<Loading />} //If not pass, nothing appears at the time of new version check.
+    >
     <Context.Provider value={{closeCart, setCloseCart }}>
      <userContext.Provider value={{input, setInput}}>
        <OrderContext.Provider value={{options, setOptions}}>
@@ -105,6 +111,7 @@ function App() {
     </OrderContext.Provider>
     </userContext.Provider>
     </Context.Provider>
+    </CacheBuster>
   );
 }
 
