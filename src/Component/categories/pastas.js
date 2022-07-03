@@ -32,7 +32,7 @@ export default function Pastas(){
                   <div style={{height: '100%', width: '30%', position: 'relative', overflow: 'hidden', borderRadius: '5px'}}>
                     {
                      isLoading?
-                  <Img src={p.picture_url} /> : <Loading/>
+                  <Img src={p.picture_url} loading='lazy' /> : <Loading/>
                     }
                   </div>                  
                   <ContainerInfo >

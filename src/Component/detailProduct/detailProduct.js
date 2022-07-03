@@ -249,7 +249,7 @@ function Card ({sauce, description, picture_url, title, price, image}){
   return(
     <ContainerOptionChild >
        <div style={{height: '50%', width: '10%', position: 'relative', borderRadius: '50%' , overflow: 'hidden', display: 'flex', alignItems: 'center'}}>       
-       <ImageSauce src={image} alt='salsa'/>
+       <ImageSauce src={image} alt='salsa' loading="lazy"/>
       </div> 
      
      <div  style={{display: 'flex', width: '70%', flexDirection: 'column', marginLeft: '1rem'}}>

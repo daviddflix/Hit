@@ -90,7 +90,7 @@ function Card({img, product, price, quantity, picture_url, id}){
   return(
     <Container>
     {
-     isLoading? <Img src={img}/> : <Loading/>
+     isLoading? <Img src={img} loading='lazy'/> : <Loading/>
     }
    
    <ContainerInfo>

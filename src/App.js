@@ -16,10 +16,11 @@ import OrderContext from './Component/context/orderContext';
 import MessageMedia from './Component/MessajeMedia';
 import NoMatch from './Component/404/404';
 import Form from './Component/addressform/Form';
+import { Suspense, lazy } from 'react';
+// const ResumenCarrito = lazy(() => import('./Component/resumenCarrito/carrito'));
 
 function App() {
 
- 
 
   const media = window.matchMedia("(max-width:900px)")
   
@@ -70,7 +71,10 @@ function App() {
   
           
               <Route exact path='/carrito'>
-             <ResumenCarrito/>
+              <ResumenCarrito />
+              {/* <Suspense fallback={<div>Loading...</div>}>
+              <ResumenCarrito />
+            </Suspense> */}
              </Route> 
  
              <Route exact path='/formPago'>
