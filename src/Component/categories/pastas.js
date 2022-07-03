@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { Container, ContainerHeart, ContainerInfo, Heart, Img,  MainContainer, NavLink, Title } from "./styles";
+import { Container, ContainerInfo, Img,  MainContainer, NavLink, Title } from "./styles";
 import Rating from '@mui/material/Rating';
 
 export default function Pastas(){

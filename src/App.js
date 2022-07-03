@@ -17,7 +17,7 @@ import Form from './Component/addressform/Form';
 import Loading from './Component/spinner/spinner';
 import CacheBuster from 'react-cache-buster';
 import { version } from '../package.json';
-console.log(version)
+
 
 function App() {
 
