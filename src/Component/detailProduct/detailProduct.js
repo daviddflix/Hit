@@ -25,7 +25,7 @@ export default function DetailProduct(){
     
      const detail = useSelector(state => state.detail)// details of the products
      const {options, setOptions} = useContext(OrderContext);
-     console.log('de', detail)
+     
 
       const BackToProducts = () => {
          if(options.salsa.length){

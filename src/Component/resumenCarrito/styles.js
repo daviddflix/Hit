@@ -17,9 +17,10 @@ export const MainContainer = styled.div`
 
 export const Img = styled.img`
 @media screen and (max-width: 900px){
-  width: 20%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
+  transform: scale(3);
 } 
 `; 
 

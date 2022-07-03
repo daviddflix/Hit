@@ -96,7 +96,9 @@ function Card ({ product, price, quantity, picture_url, id}) {
 
     return(
         <Container>
+          <div style={{width: '100%', height: '50%'}}>
         <Img src={picture_url} />
+          </div>
 
        <ContainerInfo >
            <Title>{product}</Title>

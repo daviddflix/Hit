@@ -6,7 +6,6 @@ import { BtnFinalizarCompra,Options, ContainerButtons, Commentarios, Message,  D
 import CurrencyFormat from 'react-currency-format';
 import {Buttons} from '../categories/bebidasStyles'
 import {VscTrash} from 'react-icons/vsc'
-import Loading from "../spinner/spinner";
 import { useEffect, useState } from "react";
 
 
@@ -19,6 +18,7 @@ export default function ResumenCarrito (){
 
   
   const cart = useSelector(state => state.cart);
+  
   const history = useHistory();
 
   const ProcederAlPago = async () => {
@@ -115,14 +115,14 @@ function Card({product, salsas, unit_price, toppings, picture_url, id, Comments}
     dispatch(DeleteItem(id))
   }
 
-//   useEffect(() => {
-//     setDessert(prev => ({...prev, unit_price: 400}))
- 
-// }, [dessert.quantity])
+
 
   return(
     <SubContainer>
-    <Img src={picture_url}/>
+    <div style={{height: '90%', width: '20%', position: 'relative', borderRadius: '50%' , overflow: 'hidden', display: 'flex', alignItems: 'center'}}>       
+    <Img src={picture_url} alt='pasta'/>
+   </div>
+    
    
     <ContainerInfo>
    

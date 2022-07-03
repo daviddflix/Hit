@@ -21,13 +21,11 @@ align-items: center;
 `;
 
 export const Img = styled.img`
-
-
-width: 50px;
-height: 80px;
-
-
+border: none;
+width: 40%;
+height: 90%;
 `;
+
 
 export const ContainerInfo= styled.div`
 
