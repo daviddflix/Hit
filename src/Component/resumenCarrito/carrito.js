@@ -85,7 +85,7 @@ console.log(cart)
            
            <BtnFinalizarCompra
               onClick={ProcederAlPago} 
-              disabled={!cart.length}>FINALIZAR COMPRA</BtnFinalizarCompra>
+              disabled={true}>FINALIZAR COMPRA</BtnFinalizarCompra>
                <ButtonVerCarrito onClick={backToProducts}>ARMAR OTRO HIT</ButtonVerCarrito>
            </div>
 
