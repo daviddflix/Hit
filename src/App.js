@@ -58,55 +58,10 @@ function App() {
     <Context.Provider value={{closeCart, setCloseCart }}>
      <userContext.Provider value={{input, setInput}}>
        <OrderContext.Provider value={{options, setOptions}}>
-       {
-        media.matches === true ? <div className="App">
-      
-        <Nav/>
-        <Switch>
- 
-       
- 
-             <Route  exact path='/envio'>
-             <Info/>
-             </Route> 
- 
-             <Route exact path='/'>
-             <Categories/>
-             
-             </Route> 
-  
-          
-              <Route exact path='/carrito'>
-              <ResumenCarrito />
-              {/* <Suspense fallback={<div>Loading...</div>}>
-              <ResumenCarrito />
-            </Suspense> */}
-             </Route> 
- 
-             <Route exact path='/formPago'>
-             <Form/>
-             </Route>    
- 
-             <Route exact path='/detail/:id'>
-             <DetailProduct/>
-             </Route> 
-
              <Route path='*'>
-             <NoMatch/>
-             </Route> 
- 
-             
-             </Switch>  
-           
-             <Footer />
- 
-             <div className='chat'>
-             <Chat/>
-             </div>
-         
-     
-     </div> : <MessageMedia/>
-       }
+     <NoMatch/>
+     </Route> 
+
     
     </OrderContext.Provider>
     </userContext.Provider>
@@ -117,4 +72,49 @@ function App() {
 
 export default App;
 
-      
+// {
+//   media.matches === true ? <div className="App">
+
+//   <Nav/>
+//   <Switch>
+
+ 
+
+//        <Route  exact path='/envio'>
+//        <Info/>
+//        </Route> 
+
+//        <Route exact path='/'>
+//        <Categories/>
+       
+//        </Route> 
+
+    
+//         <Route exact path='/carrito'>
+//         <ResumenCarrito />
+//        </Route> 
+
+//        <Route exact path='/formPago'>
+//        <Form/>
+//        </Route>    
+
+//        <Route exact path='/detail/:id'>
+//        <DetailProduct/>
+//        </Route> 
+
+//        <Route path='*'>
+//        <NoMatch/>
+//        </Route> 
+
+       
+//        </Switch>  
+     
+//        <Footer />
+
+//        <div className='chat'>
+//        <Chat/>
+//        </div>
+   
+
+// </div> : <MessageMedia/>
+//  }

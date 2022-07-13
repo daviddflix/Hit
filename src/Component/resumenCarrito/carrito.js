@@ -20,6 +20,7 @@ export default function ResumenCarrito (){
   const cart = useSelector(state => state.cart);
   
   const history = useHistory();
+  const closeNow = true
 
   const ProcederAlPago = async () => {
     if(close === false){
@@ -75,7 +76,7 @@ console.log(cart)
 
            </ContainerProduct>
 
-           {close === true? <Message>Lo sentimos, estamos cerrados</Message> : <></>} 
+           {closeNow === true? <Message>Lo sentimos, estamos cerrados</Message> : <></>} 
            <ContainerTotal>
               <h4>TOTAL</h4>
               <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
@@ -84,8 +85,7 @@ console.log(cart)
            <div style={{display:'flex', width: '100%', position: 'relative'}}>
            
            <BtnFinalizarCompra
-              onClick={ProcederAlPago} 
-              disabled={true}>FINALIZAR COMPRA</BtnFinalizarCompra>
+              onClick={ProcederAlPago} disabled >FINALIZAR COMPRA</BtnFinalizarCompra>
                <ButtonVerCarrito onClick={backToProducts}>ARMAR OTRO HIT</ButtonVerCarrito>
            </div>
 

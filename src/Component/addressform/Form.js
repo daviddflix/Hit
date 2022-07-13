@@ -166,8 +166,10 @@ const handleZona = (e) => {
        
       </Grid>
   <A href={link}>
-      <Button disabled={!input.nombre || input.numero.length > 10 || !input.direccion || !input.zona || !input.method || !cart.length }>FINALIZAR PEDIDO</Button></A>
+      <Button disabled>FINALIZAR PEDIDO</Button></A>
      
         </MainContainer>
     )
 }
+
+//!input.nombre || input.numero.length > 10 || !input.direccion || !input.zona || !input.method || !cart.length
