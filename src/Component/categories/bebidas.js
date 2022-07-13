@@ -10,15 +10,17 @@ export default function Drinks(){
 
     const productos = useSelector(state => state.food)
 
-
-    const ItemWithAlcohol = productos[0].beverages.slice(0,5)
-    const ItemWithoutAlcohol = productos[0].beverages.slice(6, 10)
+console.log(productos)
+   
 
     const dispatch = useDispatch()
 
     useEffect(() => {
       dispatch(getProduct())
     }, [dispatch])
+
+    const ItemWithAlcohol = productos[0].beverages.slice(0,5)
+    const ItemWithoutAlcohol = productos[0].beverages.slice(6, 10)
 
     return(
         <MainContainer>
@@ -28,7 +30,7 @@ export default function Drinks(){
            {
               productos? ItemWithAlcohol.map((p, i) => {
                  return(
-                  <Card key={i} product={p.title} price={p.price} id={p.id} quantity={1} picture_url={p.picture_url}/>
+                  <Card key={i} product={p.title} price={p.price} id={p.id} quantity={1} picture_url={`https://imgb.imgix.net/${p.picture_url}?auto=compress`}/>
                  
                  )
                }): <Loading/>
@@ -39,7 +41,7 @@ export default function Drinks(){
                {
                     productos.length? ItemWithoutAlcohol.map((p, i) => {
                         return(
-                         <Card key={i} product={p.title} price={p.price} id={p.id} quantity={1} picture_url={p.picture_url}/>
+                         <Card key={i} product={p.title} price={p.price} id={p.id} quantity={1} picture_url={`https://imgb.imgix.net/${p.picture_url}?auto=compress`}/>
                         
                         )
                       }): <Loading/>

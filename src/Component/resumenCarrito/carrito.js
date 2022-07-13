@@ -47,7 +47,7 @@ export default function ResumenCarrito (){
   const backToProducts = () => {
     history.push('/')
  }
-
+console.log(cart)
 
 
    
@@ -61,7 +61,7 @@ export default function ResumenCarrito (){
                cart.length ? cart.map((p, i) => {
               
                  return(
-                  <Card key={i} picture_url={p.picture_url} 
+                  <Card key={i} picture_url={`https://hitpastasssss.imgix.net${p.picture_url}?auto=compress`} 
                   product={p.title}
                   id={p.id}
                   unit_price={p.unit_price}

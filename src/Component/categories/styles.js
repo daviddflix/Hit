@@ -4,13 +4,7 @@ import {BsHeart} from 'react-icons/bs'
 import {BsFillArrowRightSquareFill} from 'react-icons/bs'
 
 export const MainContainer = styled.div`
-    
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-@media screen and (max-width:900px){
-    
+ 
     width: 100%;
     position: relative;
     display: flex;
@@ -18,11 +12,11 @@ export const MainContainer = styled.div`
     justify-content: space-around;
     align-items: center;
    
-}
+
 `;
 
 export const Img = styled.img`
-        transform: scale(3);
+        transform: scale(4);
         width: 100%;
         height: 100%;
         border-radius: 5px;
@@ -30,17 +24,17 @@ export const Img = styled.img`
 
 export const Container = styled.div`
    
-@media screen and (max-width:900px){
+
    
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     width: 100%;
     justify-content: center;
     
       
-}
+
 `;
 
 export const NavLink = styled(Link)`
@@ -52,22 +46,22 @@ export const NavLink = styled(Link)`
     margin-bottom: 1rem;
     width: 95%;
     border-radius: 5px;
+   border: 1px solid ;
   
 `;
 
 
 export const ContainerInfo = styled.div`
-   
 
-   
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     justify-content: center;
     width: 70%;
+    
    
-
+   
 `;
 
 

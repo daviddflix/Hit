@@ -14,6 +14,8 @@ export default function Pastas(){
     const dispatch = useDispatch()
     const [value, setValue] = useState(5);
 
+    const colors = ['#282828', '#ff595a', '#5dc8d2', '#29d884']
+
  
     useEffect(() => {
       dispatch(getProduct())
@@ -26,13 +28,13 @@ export default function Pastas(){
            <h3>ELIGE TU HIT</h3>
            <Container>
            {
-              isLoading? productos.map(p => {
+              isLoading? productos.map((p, index) => {
                  return(
-                   <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none', }}>
+                   <NavLink key={p.id} style={{textDecoration:'none', borderColor: colors[index % colors.length]}}    to={`/detail/${p.id}`} >
                   <div style={{height: '100%', width: '30%', position: 'relative', overflow: 'hidden', borderRadius: '5px'}}>
                     {
                      isLoading?
-                  <Img src={p.picture_url} loading='lazy' /> : <Loading/>
+                  <Img src={`https://hitpastasssss.imgix.net${p.picture_url}?auto=compress`} loading='lazy' /> : <Loading/>
                     }
                   </div>                  
                   <ContainerInfo >

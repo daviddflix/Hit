@@ -35,7 +35,7 @@ export default function Dessert () {
                 product={p.title}
                 price={products[0].dessert.dessertPrice}
                 quantity={1}
-                picture_url={p.picture_url}
+                picture_url={`https://imgb.imgix.net${p.picture_url}?auto=compress`}
                 id={p.id}
                 />
              )

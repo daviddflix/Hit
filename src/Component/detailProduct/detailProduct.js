@@ -2,7 +2,7 @@ import {  useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import {  addItemDetail, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, MainBoxBtns, ContainerOption, Popup, BtnArmarOtroHit, Description, BoxTitleAndPhoto2Child, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon, ImageSauce } from "./styles"
+import { BoxComentario, BoxTitleAndPhoto, MainBoxBtns, ContainerOption, Popup, BtnArmarOtroHit, Description, BoxTitleAndPhoto2Child, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon, ImageSauce, ImageSauceTopping } from "./styles"
 import { motion } from "framer-motion/dist/framer-motion"
 import OrderContext from "../context/orderContext"
 import {v4 as uuidv4} from 'uuid'
@@ -24,7 +24,7 @@ export default function DetailProduct(){
     
      const detail = useSelector(state => state.detail)// details of the products
      const {options, setOptions} = useContext(OrderContext);
-     
+     console.log('detail', detail)
 
       const BackToProducts = () => {
          if(options.salsa.length){
@@ -120,7 +120,7 @@ export default function DetailProduct(){
            
            
              <div style={{height: '350px', width: '100%', position: 'relative', overflow: 'hidden', borderRadius: '0 0 10px 10px'}}>
-              <PhotoProduct  src={detail.picture_url}/> 
+              <PhotoProduct  src={`https://hitpastasssss.imgix.net${detail.picture_url}?auto=compress`}/> 
             </div> 
             <Like onClick={() => {history.push('/')}}/>
         
@@ -142,10 +142,11 @@ export default function DetailProduct(){
                           key={index}
                           description={p.description}
                           sauce={p.sauce}
-                          picture_url={detail.picture_url}
+                          pic_to_render={detail.picture_url}
+                          picture_url={`https://hitpastasssss.imgix.net/${p.picture_url}?auto=compress`}
                           price={detail.price}
                           title={detail.title}
-                          image={p.img}
+                          image={`https://hitpastasssss.imgix.net/${p.img}?auto=compress`}
                           />
                         
                         )
@@ -162,12 +163,15 @@ export default function DetailProduct(){
 
                 <ContainerOption>
                 {
-                     detail && detail?.toppings?.option?.map(p => {
+                     detail && detail?.toppings?.option?.map((p, i) => {
                         return(
-                            <ContainerOptionChild  key={p}>
-                                 <label style={{width: '40%'}} htmlFor={p}>{p}</label>
+                            <ContainerOptionChild  key={i}>
+                               <div style={{height: '50%', width: '10%', position: 'relative', borderRadius: '50%' , overflow: 'hidden', display: 'flex', alignItems: 'center'}}>       
+                              <ImageSauceTopping src={`https://hitpastasssss.imgix.net/${p.picture}?auto=compress`} alt='topping'/>
+      </div> 
+                                 <label style={{width: '40%'}} htmlFor={p.topping}>{p.topping}</label>
                                   <label style={{width: '30%'}}>${detail.toppings.price}</label>
-                                 <InputOptions type='checkbox' id={p} name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>
+                                 <InputOptions type='checkbox' id={p.topping} name={p.topping} checked={options.toppings.index} key={p.topping}  value={p.topping} onChange={handleToppings}/>
                             </ContainerOptionChild>
                         )
                     })
@@ -203,12 +207,12 @@ export default function DetailProduct(){
 }
 
 
-function Card ({sauce, description, picture_url, title, price, image}){
+function Card ({sauce,pic_to_render, description, picture_url, title, price, image}){
 
   const {options, setOptions} = useContext(OrderContext);
 
   const [message, setMessage] = useState(false)
-  
+
 
       useEffect(() => {
         setTimeout(() => {
@@ -217,14 +221,14 @@ function Card ({sauce, description, picture_url, title, price, image}){
       }, [message])
 
     
-
+console.log('pic',pic_to_render)
   const handleSalsa = (e) => {
       
     const {name, checked} = e.target
       
    if (checked === true){
    options.salsa.length <=1 ? setOptions(prev => ({
-       ...prev, salsa: [...prev.salsa, name], picture_url: picture_url, 
+       ...prev, salsa: [...prev.salsa, name], picture_url: pic_to_render, 
        id: uuidv4(), price: price, title: title
      })) : setMessage(true)
    }
